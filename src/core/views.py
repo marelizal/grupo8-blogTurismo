@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .models import Categoria, Articulo
+from posts.models import Categoria,Articulo
 
 # vista de la pagina de inicio
 
