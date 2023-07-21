@@ -1,8 +1,33 @@
-{% extends 'base.html' %} {% load static %} {% block title %}Home{% endblock %}
+{% extends 'base.html' %} 
+{% load static %} 
+{% block title %}TChaco - Home{% endblock %}
 {% block content %}
 
 <div class="row">
-  <div class="col"></div>
+  <div class="col">
+
+    <div class="card mb-4">
+        <a href="#!"><img class="card-img-top" src="https://dummyimage.com/850x350/dee2e6/6c757d.jpg" alt="..." /></a>
+        <div class="card-body">
+            <div class="small text-muted">1 de enero de 2023</div>
+            <h2 class="card-title">Título de la Publicación Destacada</h2>
+            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis aliquid atque, nulla? Quos cum ex quis soluta, a laboriosam. Dicta expedita corporis animi vero voluptate voluptatibus possimus, veniam magni quis!</p>
+            <a class="btn btn-primary" href="#!">Leer más →</a>
+        </div>
+    </div>
+    <div class="card mb-4">
+        <a href="#!"><img class="card-img-top" src="https://dummyimage.com/850x350/dee2e6/6c757d.jpg" alt="..." /></a>
+        <div class="card-body">
+            <div class="small text-muted">1 de enero de 2023</div>
+            <h2 class="card-title">Título de la Publicación Destacada</h2>
+            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis aliquid atque, nulla? Quos cum ex quis soluta, a laboriosam. Dicta expedita corporis animi vero voluptate voluptatibus possimus, veniam magni quis!</p>
+            <a class="btn btn-primary" href="#!">Leer más →</a>
+        </div>
+    </div>
+
+    
+
+  </div>
   <div class="col-lg-4">
     <!-- Search widget-->
     <div class="card mb-4">
@@ -38,37 +63,7 @@
       </div>
     </div>
 
-    <div class="card mb-4">
-      <div class="card-header">Ultimas publicaciones</div>
-      <div class="card-body">
-        <ul class="list-unstyled">
-          <!-- últimas publicaciones -->
-          {% for publicacion in ultimas_publicaciones %}
-          <li class="media mb-3">
-            <div class="row">
-              <div class="col-2">
-                <img
-                  src="{{ publicacion.imagen.url }}"
-                  class="mr-3 rounded"
-                  alt=""
-                  width="50"
-                  height="50"
-                />
-              </div>
-              <div class="col">
-                <div class="media-body">
-                  <h6 class="mt-0 mb-1 text-truncate">
-                    {{ publicacion.titulo }}
-                  </h6>
-                  <p>{{ publicacion.fecha }}</p>
-                </div>
-              </div>
-            </div>
-          </li>
-          {% endfor %}
-        </ul>
-      </div>
-    </div>
+  
   </div>
 </div>
 
