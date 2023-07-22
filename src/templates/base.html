@@ -66,7 +66,7 @@
             <a class="nav-link {% if request.resolver_match.url_name == 'post_list' %}active{% endif %}" href="{% url 'post_list' %}">Articulos</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="">Galeria</a>
+            <a class="nav-link" href="{% url 'gallery' %}">Galeria</a>
           </li>
           <li class="nav-item">
             <a class="nav-link {% if request.resolver_match.url_name == 'about' %}active{% endif %}" href="{% url 'about' %}">Acerca de nosotros</a>
