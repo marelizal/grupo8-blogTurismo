@@ -1,0 +1,27 @@
+<!-- templates/posts/post_list.html -->
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Publicaciones{% endblock %}
+
+{% block content %}
+
+<h3>Todos las publicaciones</h3>
+
+<div class="row">
+    {% for post in posts %}
+    <div class="col-lg-6 mb-4">
+        <div class="card">
+            <a href="#!"><img class="card-img-top" src="https://dummyimage.com/700x350/dee2e6/6c757d.jpg" alt="..." /></a>
+            <div class="card-body">
+                <div class="small text-muted">January 1, 2023</div>
+                <h2 class="card-title h5">{{ post.titulo }}</h2>
+                <p class="card-text">{{ post.contenido|slice:":100" }}</p>
+                <a class="btn btn-primary" href="{% url 'post_detail' pk=post.pk %}">Leer mas →</a>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+{% endblock %}
