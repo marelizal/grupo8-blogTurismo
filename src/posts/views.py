@@ -1,5 +1,5 @@
 
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect,get_object_or_404
 from .forms import ArticuloForm
 from .models import Articulo, Categoria
 
@@ -39,3 +39,18 @@ def post_add(request):
         form = ArticuloForm()
     
     return render(request, 'posts/post_add.html', {'form': form})
+
+
+
+def post_update(request, post_id):
+    articulo = get_object_or_404(Articulo, pk=post_id)
+
+    if request.method == 'POST':
+        form = ArticuloForm(request.POST, request.FILES, instance=articulo)
+        if form.is_valid():
+            form.save()
+            return redirect('post_list') 
+    else:
+        form = ArticuloForm(instance=articulo)
+
+    return render(request, 'posts/post_update.html', {'form': form})

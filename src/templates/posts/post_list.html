@@ -18,6 +18,7 @@
                 <h2 class="card-title h5">{{ post.titulo }}</h2>
                 <p class="card-text">{{ post.contenido|slice:":100" }}</p>
                 <a class="btn btn-primary" href="{% url 'post_detail' pk=post.pk %}">Leer mas →</a>
+                <a href="{% url 'update_post' post.id %}" class="btn btn-danger">Editar este post</a>
             </div>
         </div>
     </div>
