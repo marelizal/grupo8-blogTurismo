@@ -54,3 +54,13 @@ def post_update(request, post_id):
         form = ArticuloForm(instance=articulo)
 
     return render(request, 'posts/post_update.html', {'form': form})
+
+def post_delete(request, post_id):
+    articulo = get_object_or_404(Articulo, pk=post_id)
+
+    if request.method == 'POST':
+        articulo.delete()
+        return redirect('post_list')
+
+
+    return render(request, 'posts/post_confirm_delete.html', {'post': articulo})
