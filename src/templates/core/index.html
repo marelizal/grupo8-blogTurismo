@@ -3,8 +3,7 @@
 {% block title %}TChaco - Home{% endblock %}
 {% block content %}
 
-<div class="row">
-  <div class="col">
+
 
   {% for publicacion in ultimas_publicaciones %}
       <div class="card mb-4">
@@ -13,51 +12,11 @@
               <div class="small text-muted text-capitalize">1 de enero de 2023 | {{publicacion.autor}} </div>
               <h2 class="card-title"> {{publicacion.titulo}} </h2>
               <p class="card-text"> {{publicacion.contenido|slice:":100"}} </p>
-              <a class="btn btn-primary" href="#!">Leer más →</a>
+              <a class="btn btn-primary" href="">Leer mas →</a>
           </div>
       </div>
   {% endfor %}
  
     
-
-  </div>
-  <div class="col-lg-4">
-    <!-- Search widget-->
-    <div class="card mb-4">
-      <div class="card-header">Buscar articulos</div>
-      <div class="card-body">
-        <div class="input-group">
-          <input
-            class="form-control"
-            type="text"
-            placeholder="Que estas buscando ?"
-            aria-label="Que estas buscando ?"
-            aria-describedby="button-search"
-          />
-          <button class="btn btn-primary" id="button-search" type="button">
-            Go!
-          </button>
-        </div>
-      </div>
-    </div>
-
-    <div class="card mb-4">
-      <div class="card-header">Categorias</div>
-      <div class="card-body">
-        <div class="row">
-          <div class="col-sm-6">
-            <ul class="list-unstyled mb-0">
-              {% for categoria in categorias %}
-              <li><a href="#!"> {{categoria.nombre}} </a></li>
-              {% endfor %}
-            </ul>
-          </div>
-        </div>
-      </div>
-    </div>
-
-  
-  </div>
-</div>
 
 {% endblock %}

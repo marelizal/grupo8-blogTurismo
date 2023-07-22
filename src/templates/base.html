@@ -58,30 +58,23 @@
           class="collapse navbar-collapse justify-content-end"
           id="collapsibleNavId"
         >
-          <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
-            <li class="nav-item">
-              <a
-                class="nav-link active"
-                href="{% url 'index' %}"
-                aria-current="page"
-                >Home <span class="visually-hidden">(current)</span></a
-              >
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="">Articulos</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="">Galeria</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="{% url 'about' %}"
-                >Acerca de nosotros</a
-              >
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="{% url 'contact' %}">Contacto</a>
-            </li>
-          </ul>
+        <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
+          <li class="nav-item">
+            <a class="nav-link {% if request.resolver_match.url_name == 'index' %}active{% endif %}" href="{% url 'index' %}" aria-current="page">Home <span class="visually-hidden">(current)</span></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link {% if request.resolver_match.url_name == 'post_list' %}active{% endif %}" href="{% url 'post_list' %}">Articulos</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="">Galeria</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link {% if request.resolver_match.url_name == 'about' %}active{% endif %}" href="{% url 'about' %}">Acerca de nosotros</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link {% if request.resolver_match.url_name == 'contact' %}active{% endif %}" href="{% url 'contact' %}">Contacto</a>
+          </li>
+        </ul>
         </div>
 
         <div
@@ -101,7 +94,49 @@
     </nav>
 
     <main class="container mt-5 flex-grow-1">
-      {% block content %}{% endblock %}
+      <div class="row">
+        <div class="col-lg-8">
+          {% block content %}{% endblock %}
+        </div>
+        <div class="col-lg-3">
+          <!-- Search widget-->
+          <div class="card mb-4 mt-5">
+            <div class="card-header">Buscar articulos</div>
+            <div class="card-body">
+              <div class="input-group">
+                <input
+                  class="form-control"
+                  type="text"
+                  placeholder="Que estas buscando ?"
+                  aria-label="Que estas buscando ?"
+                  aria-describedby="button-search"
+                />
+                <button class="btn btn-primary" id="button-search" type="button">
+                  Go!
+                </button>
+              </div>
+            </div>
+          </div>
+      
+          <div class="card mb-4">
+            <div class="card-header">Categorias</div>
+            <div class="card-body">
+              <div class="row">
+                <div class="col-sm-6">
+                  <ul class="list-unstyled mb-0">
+                    {% for categoria in categorias %}
+                    <li><a href="#!"> {{categoria.nombre}} </a></li>
+                    {% endfor %}
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+      
+        
+        </div>
+      </div>
+    
     </main>
 
     <footer class="footer bg-white border-top text-dark py-4 mt-3">
