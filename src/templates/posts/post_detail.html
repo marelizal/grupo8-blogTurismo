@@ -12,12 +12,12 @@
             <article class="">
                 <header class="mb-4 text-center text-uppercase">
                     <h1 class="fw-bolder mb-1"> {{post.titulo}} </h1>
-                    <div class="text-muted fst-italic mb-2">January 1, 2023 | Autor: {{post.autor}} </div>
+                    <div class="text-muted fst-italic mb-2">{{post.creacion}} | Autor: {{post.autor}} </div>
                     <a class="badge bg-secondary text-decoration-none link-light" href="#!"> {{post.categoria}}</a>
                 </header>
                
                 <figure class="mb-4">
-                    <img class="img-fluid w-100 rounded" src="https://dummyimage.com/1000x400/ced4da/6c757d.jpg" alt="...">
+                    <img class="img-fluid w-100 rounded" src="{{post.imagen.url}}" width="80%" height="80%" alt="...">
                 </figure>
               
 

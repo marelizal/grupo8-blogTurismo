@@ -9,7 +9,7 @@
       <div class="card mb-4">
           <a href="#!"><img class="card-img-top" src="{{publicacion.imagen.url}}" width="80%" height="80%" alt="..." /></a>
           <div class="card-body">
-              <div class="small text-muted text-capitalize">1 de enero de 2023 | {{publicacion.autor}} </div>
+              <div class="small text-muted text-capitalize">{{publicacion.creacion}} | {{publicacion.autor}} </div>
               <h2 class="card-title"> {{publicacion.titulo}} </h2>
               <p class="card-text"> {{publicacion.contenido|slice:":100"}} </p>
               <a class="btn btn-primary" href="">Leer mas →</a>
