@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Galería{% endblock %}
+
+{% block content %}
+
+<h1>Galería de imágenes.</h1>
+
+<div>
+    {% for image in images %}
+        <img src="{{ image }}" alt="Imagen" width="300" height="200">
+    {% endfor %}
+</div>
+
+{% endblock %}
