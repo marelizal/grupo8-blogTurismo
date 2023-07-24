@@ -27,8 +27,8 @@ def aboutView(request):
     return render(request, 'core/about.html', {})
 
 
-def contactView(request):
-    return render(request, 'core/contact.html', {})
+# def contactView(request):
+#     return render(request, 'core/contact.html', {})
 
 def galleryView(request):
     media_path = os.path.join(settings.MEDIA_ROOT,'articulo')  # Obtiene la ruta absoluta de la carpeta /media
