@@ -1,5 +1,5 @@
 from django.db import models
-from django.contrib.auth.models import User
+from usuarios.models import Usuario
 
 # Create your models here.
 class Categoria(models.Model):
@@ -33,7 +33,7 @@ class Articulo(models.Model):
     imagen = models.ImageField(upload_to='articulo', null=True)
     publicado = models.BooleanField(default=False)
     categoria = models.ForeignKey(Categoria, on_delete=models.SET_NULL, null=True)
-    autor = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
+    autor = models.ForeignKey(Usuario, on_delete=models.SET_NULL, null=True)
     etiqueta = models.ManyToManyField(Etiqueta)
     creacion = models.DateTimeField(auto_now_add=True)
     actualizacion = models.DateTimeField(auto_now=True)
