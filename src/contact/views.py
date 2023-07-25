@@ -14,8 +14,8 @@ def contactoView(request):
         # Enviar correo electrónico
         subject = 'Nuevo mensaje de contacto'
         message = f'Nombre: {nombre}\nEmail: {email}\nMensaje: {mensaje}'
-        from_email = 'tchaco.soporte@gmail.com'  # Cambia por tu dirección de correo electrónico
-        recipient_list = ['tchaco.soporte@gmail.com']  # Cambia por la dirección de correo del destinatario
+        from_email = 'tchaco.soporte@gmail.com'
+        recipient_list = ['tchaco.soporte@gmail.com']
         send_mail(subject, message, from_email, recipient_list)
 
     return render(request, 'core/contact.html', {})
