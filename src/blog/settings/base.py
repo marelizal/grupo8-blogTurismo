@@ -16,6 +16,11 @@ import os
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent.parent
 
+# VARIABLES DEL LOGIN
+
+LOGIN_URL = '/usuarios/login/'
+LOGIN_REDIRECT_URL = '../../publicaciones/'
+
 # LE DIGO A DJANGO QUE USE MI MODELO PROPIO PARA LOS USUARIOS
 AUTH_USER_MODEL = 'usuarios.Usuario'
 
@@ -29,7 +34,7 @@ SECRET_KEY = 'django-insecure-ibiog71t&@uc$lcgba5i+%eg!wbp4qmfz7p^*5jesj1b_95$9=
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['localhost', '127.0.0.1']
 
 
 # Application definition
