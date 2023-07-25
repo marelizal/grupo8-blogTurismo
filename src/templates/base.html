@@ -35,7 +35,7 @@
     <link rel="stylesheet" href="{% static 'css/styles.css' %}" />
   </head>
 
-  <body class="d-flex flex-column min-vh-100 container">
+  <body>
     <nav class="navbar sticky-top navbar-expand-sm bg-white p-4 border-bottom">
       <div class="container">
         <a class="navbar-brand" href="#">
@@ -92,73 +92,62 @@
 
     <main class="container mt-5 flex-grow-1">
       <div class="row">
-        <div class="col-lg-8">
+        <div class="col-lg-12">
           {% block content %}{% endblock %}
         </div>
-        <div class="col-lg-4">
-          <!-- Search widget-->
-          <div class="card mb-4 mt-5">
-            <div class="card-header">Buscar articulos</div>
-            <div class="card-body">
-              <div class="input-group">
-                <input
-                  class="form-control"
-                  type="text"
-                  placeholder="Que estas buscando ?"
-                  aria-label="Que estas buscando ?"
-                  aria-describedby="button-search"
-                />
-                <button class="btn btn-primary" id="button-search" type="button">
-                  Go!
-                </button>
-              </div>
-            </div>
-          </div>
-      
-          <div class="card mb-4">
-            <div class="card-header">Categorias</div>
-            <div class="card-body">
-              <div class="row">
-                <div class="col-sm-6">
-                  <ul class="list-unstyled mb-0">
-                    {% for categoria in categorias %}
-                    <li><a href="#!"> {{categoria.nombre}} </a></li>
-                    {% endfor %}
-                  </ul>
-                </div>
-              </div>
-            </div>
-          </div>
-      
-        
-        </div>
-      </div>
-    
-    </main>
 
-    <footer class="footer bg-white border-top text-dark py-4 mt-3">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-9 text-left">
-            &copy; Grupo 8 Informatorio Chaco
-          </div>
-          <div class="col-md-3 col-sm-3 d-flex justify-content-between">
-            <a href="#" class="" target="_blank"
-              ><i class="fab fa-facebook-f"></i
-            ></a>
-            <a href="#" class="" target="_blank"
-              ><i class="fab fa-twitter"></i
-            ></a>
-            <a href="#" class="" target="_blank"
-              ><i class="fab fa-instagram"></i
-            ></a>
-            <a href="#" class="" target="_blank"
-              ><i class="fab fa-linkedin-in"></i
-            ></a>
-          </div>
+      </header>
+
+    <!-- Sección de contenido -->
+  <section class="py-4">
+    <div class="container">
+      <div class="row">
+        <div class="col-12">
+         
+          {% block content %}{% endblock %}
+
+        </div>
+        
+      </div>
+  
+    </div>
+  </section>
+
+    <br />
+    <br />
+    <br />
+    <br />
+    <!-- Footer -->
+    <footer class="footerPersonal py-2 w-100">
+      <div class="row d-flex w-100">
+        <div class="col-md-4 d-flex justify-content-center align-items-center">
+          <span class="text-white mr-2"
+            >Copyright | Grupo 8 - informatorio 2023</span
+          >
+        </div>
+        <div class="col-md-4 mt-2 mb-2 text-center">
+          <img src="{% static 'img/logo.png' %}" alt="" width="140" />
+        </div>
+        <div
+          class="col-md-4 d-flex gap-4 justify-content-center align-items-center"
+        >
+          <span
+            ><a class="m-2 d-inline" href="google.com.ar"
+              ><img src="{% static 'img/twitter.png' %}" alt="" width="30" /></a
+          ></span>
+          <span
+            ><a class="m-2 d-block" href="facebook.com"
+              ><img src="{% static 'img/facebook.png' %}" alt="" width="30" /></a
+          ></span>
+          <span
+            ><a class="m-2 d-block" href="instagram.com"
+              ><img src="{% static 'img/instagram.png' %}" width="30" alt="" /></a
+          ></span>
         </div>
       </div>
     </footer>
+
+    <script src="{% static 'js/scripts.js' %}"></script>
 
     <!-- Bootstrap JavaScript Libraries -->
     <script
