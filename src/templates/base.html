@@ -82,20 +82,36 @@
           </div>
           <div class="d-flex justify-content-end align-items-center">
             {% if user.is_authenticated %}
-                <!-- Mostrar el nombre del usuario y enlace para cerrar sesión -->
+            {% if user.is_superuser or user.usuario.es_colaborador %}
+                <!-- Mostrar el menú desplegable para colaboradores y administradores -->
+          
+                <div class="btn-group">
+                  <button type="button" class="btn btn-danger dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                    Menu del colaborador
+                  </button>
+                  <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="{% url 'post_add' %}">Nueva Publicación</a></li>
+                   
+                    <li><hr class="dropdown-divider"></li>
+                    <li><a class="dropdown-item" href="{% url 'usuarios:logout' %}">Cerrar Sesión</a>
+                  </ul>
+                </div>
+            {% else %}
+                <!-- Mostrar solo el nombre del usuario y enlace para cerrar sesión -->
                 <span class="text-white me-2">Hola, {{ user.first_name }}</span>
                 <a href="{% url 'usuarios:logout' %}" class="btn btn-link text-white login-btn">
                     Cerrar Sesión
                 </a>
-            {% else %}
-                <!-- Mostrar enlaces para Ingresar y Registrarse -->
-                <a href="{% url 'usuarios:login' %}" class="btn btn-link mr-2 text-white login-btn">
-                    Ingresar
-                </a>
-                <a href="{% url 'usuarios:registrarse' %}" class="btn btn-outline-secondary register-btn">
-                    Registrarme
-                </a>
             {% endif %}
+        {% else %}
+            <!-- Mostrar enlaces para Ingresar y Registrarse -->
+            <a href="{% url 'usuarios:login' %}" class="btn btn-link mr-2 text-white login-btn">
+                Ingresar
+            </a>
+            <a href="{% url 'usuarios:registrarse' %}" class="btn btn-outline-secondary register-btn">
+                Registrarme
+            </a>
+        {% endif %}
         </div>
         </div>
       </nav>
