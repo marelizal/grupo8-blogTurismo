@@ -8,7 +8,7 @@ from posts.models import Categoria,Articulo
 
 def indexView(request):
     # Obtener las últimas publicaciones
-    ultimas_publicaciones = Articulo.objects.filter(publicado=True)[:5]
+    ultimas_publicaciones = Articulo.objects.filter(publicado=True)[:2]
 
     # Obtener todas las categorías
     categorias = Categoria.objects.all()

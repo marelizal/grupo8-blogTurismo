@@ -4,19 +4,40 @@
 {% block content %}
 
 
-
+<div class="text-center mb-5">
+    <h3 class="titleSection">Últimos articulos</h3>
+  </div>
   {% for publicacion in ultimas_publicaciones %}
-      <div class="card mb-4">
-          <a href="#!"><img class="card-img-top" src="{{publicacion.imagen.url}}" width="80%" height="80%" alt="..." /></a>
-          <div class="card-body">
-              <div class="small text-muted text-capitalize">{{publicacion.creacion}} | {{publicacion.autor}} </div>
-              <h2 class="card-title"> {{publicacion.titulo}} </h2>
-              <p class="card-text"> {{publicacion.contenido|slice:":100"}} </p>
-              <a class="btn btn-primary" href="">Leer mas →</a>
-          </div>
+  <div class="card mb-5">
+    <div class="row g-0">
+      <div class="col-md-3">
+        <img
+          src="{{publicacion.imagen.url}}"
+          class="img-fluid h-100 w-100 rounded"
+          alt="..."
+        />
       </div>
+      <div class="col-md-9">
+        <div class="card-body">
+          <h5 class="card-title fw-bold">
+            {{publicacion.titulo}}
+          </h5>
+          <p class="card-text">
+            {{publicacion.contenido|slice:":150"}}
+          </p>
+          <p class="card-text">
+            <small class="text-muted"
+              >{{publicacion.creacion}} | <strong class="text-capitalize">{{publicacion.autor}}</strong>
+              </small
+            >
+          </p>
+          <a href="{% url 'post_detail' publicacion.id %}" class="btn btn-primary">Leer más</a>
+        </div>
+      </div>
+    </div>
+  </div>
   {% endfor %}
- 
+  
     
 
 {% endblock %}

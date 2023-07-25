@@ -1,9 +1,9 @@
 from django.db import models
-from django.contrib.auth.models import User
+from usuarios.models import Usuario
 
 # Create your models here.
 class Categoria(models.Model):
-    nombre = models.CharField(max_length=200, unique=True)
+    nombre = models.CharField(max_length=150, unique=True)
     activo = models.BooleanField(default=True)
     creacion = models.DateTimeField(auto_now_add=True)
     actualizacion = models.DateTimeField(auto_now=True)
@@ -15,7 +15,7 @@ class Categoria(models.Model):
         return self.nombre
 
 class Etiqueta(models.Model):
-    nombre = models.CharField(max_length=200, unique=True)
+    nombre = models.CharField(max_length=150, unique=True)
     activo = models.BooleanField(default=True)
     creacion = models.DateTimeField(auto_now_add=True)
     actualizacion = models.DateTimeField(auto_now=True)
@@ -32,8 +32,8 @@ class Articulo(models.Model):
     contenido = models.TextField()
     imagen = models.ImageField(upload_to='articulo', null=True)
     publicado = models.BooleanField(default=False)
-    categoria = models.ForeignKey(Categoria, on_delete=models.SET_NULL, null=True)
-    autor = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
+    categoria = models.ForeignKey(Categoria, on_delete=models.SET_NULL, related_name='posteos', null=True)
+    autor = models.ForeignKey(Usuario, on_delete=models.SET_NULL, related_name='posteos_usario', null=True)
     etiqueta = models.ManyToManyField(Etiqueta)
     creacion = models.DateTimeField(auto_now_add=True)
     actualizacion = models.DateTimeField(auto_now=True)

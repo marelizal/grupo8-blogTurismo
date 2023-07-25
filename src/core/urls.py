@@ -11,7 +11,6 @@ urlpatterns = [
     
     path('gallery', views.galleryView, name = 'gallery'),
 
-    # Inclu
+    # Includes:
     path('publicaciones/', include('posts.urls')),
-    path('contacto/', include('contact.urls'), name = 'contact'),
-]
+]  

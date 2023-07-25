@@ -5,12 +5,17 @@
 
 {% block content %}
 
-<h1>Galería de imágenes.</h1>
 
-<div>
+<div class="text-center mb-5">
+    <h3 class="titleSection">Galería de imágenes.</h3>
+  </div>
+
+<div class="row">
+   <div class="col">
     {% for image in images %}
-        <img src="{{ image }}" alt="Imagen" width="300" height="200">
-    {% endfor %}
+    <img src="{{ image }}" alt="Imagen" class="rounded mt-1" width="300" height="200">
+{% endfor %}
+   </div>
 </div>
 
 {% endblock %}

@@ -35,130 +35,130 @@
     <link rel="stylesheet" href="{% static 'css/styles.css' %}" />
   </head>
 
-  <body class="d-flex flex-column min-vh-100 container">
-    <nav class="navbar sticky-top navbar-expand-sm bg-white p-4 border-bottom">
-      <div class="container">
-        <a class="navbar-brand" href="#">
-          <img
-            src="{% static 'img/logo.png' %}"
-            alt="Logo del Blog"
-            width="170"
-          />
-        </a>
-        <button
-          class="navbar-toggler d-lg-none"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#collapsibleNavId"
-          aria-controls="collapsibleNavId"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >Menu</button>
-        <div
-          class="collapse navbar-collapse justify-content-end"
-          id="collapsibleNavId"
-        >
-        <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
-          <li class="nav-item">
-            <a class="nav-link {% if request.resolver_match.url_name == 'index' %}active{% endif %}" href="{% url 'index' %}" aria-current="page">Home <span class="visually-hidden">(current)</span></a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link {% if request.resolver_match.url_name == 'post_list' %}active{% endif %}" href="{% url 'post_list' %}">Articulos</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="{% url 'gallery' %}">Galeria</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link {% if request.resolver_match.url_name == 'about' %}active{% endif %}" href="{% url 'about' %}">Acerca de nosotros</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link {% if request.resolver_match.url_name == 'contact' %}active{% endif %}" href="{% url 'contacto' %}">Contacto</a>
-          </li>
-        </ul>
+  <body>
+     <!-- Header -->
+     <header class="bg-dark text-white tchaco-header">
+      <!-- Navbar -->
+      <nav
+        class="navbar navbar-expand-lg navbar-light justify-content-center fixed-top"
+      >
+        <div class="container">
+          <a class="navbar-brand mr-md-auto" href="#">
+            <img src="{% static 'img/logo.png' %}" alt="" width="200" />
+          </a>
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarSupportedContent"
+            aria-bs-controls="navbarSupportedContent"
+            aria-bs-expanded="false"
+            aria-bs-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+
+          <div
+            class="collapse navbar-collapse justify-content-center"
+            id="navbarSupportedContent"
+          >
+            <ul class="navbar-nav menu ml-auto">
+              <li class="nav-item active">
+                <a class="nav-link {% if request.resolver_match.url_name == 'index' %}active{% endif %}" href="{% url 'index' %}" aria-current="page">Inicio</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link {% if request.resolver_match.url_name == 'post_list' %}active{% endif %}" href="{% url 'post_list' %}">Articulos</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'gallery' %}">Galeria</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link {% if request.resolver_match.url_name == 'about' %}active{% endif %}" href="{% url 'about' %}">Acerca de</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link {% if request.resolver_match.url_name == 'contact' %}active{% endif %}" href="{% url 'contacto' %}">Contacto</a>
+              </li>
+            </ul>
+          </div>
+
+          <div class="d-flex justify-content-end">
+            <button class="btn btn-link mr-2 text-white login-btn">
+              Ingresar
+            </button>
+            <button class="btn btn-outline-secondary register-btn">
+              Registrarme
+            </button>
+          </div>
+        </div>
+      </nav>
+
+      <div class="container-fluid">
+        <div class="row mt-5">
+          <div class="col-md-12 text-center">
+            <h2 class="title">
+              Chaco Encantador explorando la esencia del turismo Local
+            </h2>
+            <p class="slogan">
+              Descubre la Belleza Natural, Cultura Vibrante y Experiencias
+              Únicas en la Provincia del Chaco
+            </p>
+          </div>
         </div>
 
-        <div
-          class="collapse navbar-collapse justify-content-end"
-          id="collapsibleNavId"
-        >
-          <ul class="navbar-nav  mt-2 mt-lg-0">
-            <li class="nav-item ">
-              <a class="nav-link" href="{% url 'post_add' %}">Nueva publicacion</a>
-            </li>
-          </ul>
-        </div>
+
+
+
+
       </div>
-    </nav>
+    </header>
 
-    <main class="container mt-5 flex-grow-1">
+
+    <!-- Sección de contenido -->
+  <section class="py-4">
+    <div class="container">
       <div class="row">
-        <div class="col-lg-8">
+        <div class="col-12">
           {% block content %}{% endblock %}
         </div>
-        <div class="col-lg-4">
-          <!-- Search widget-->
-          <div class="card mb-4 mt-5">
-            <div class="card-header">Buscar articulos</div>
-            <div class="card-body">
-              <div class="input-group">
-                <input
-                  class="form-control"
-                  type="text"
-                  placeholder="Que estas buscando ?"
-                  aria-label="Que estas buscando ?"
-                  aria-describedby="button-search"
-                />
-                <button class="btn btn-primary" id="button-search" type="button">
-                  Go!
-                </button>
-              </div>
-            </div>
-          </div>
-      
-          <div class="card mb-4">
-            <div class="card-header">Categorias</div>
-            <div class="card-body">
-              <div class="row">
-                <div class="col-sm-6">
-                  <ul class="list-unstyled mb-0">
-                    {% for categoria in categorias %}
-                    <li><a href="#!"> {{categoria.nombre}} </a></li>
-                    {% endfor %}
-                  </ul>
-                </div>
-              </div>
-            </div>
-          </div>
-      
-        
-        </div>
       </div>
-    
-    </main>
+    </div>
+  </section>
 
-    <footer class="footer bg-white border-top text-dark py-4 mt-3">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-9 text-left">
-            &copy; Grupo 8 Informatorio Chaco
-          </div>
-          <div class="col-md-3 col-sm-3 d-flex justify-content-between">
-            <a href="#" class="" target="_blank"
-              ><i class="fab fa-facebook-f"></i
-            ></a>
-            <a href="#" class="" target="_blank"
-              ><i class="fab fa-twitter"></i
-            ></a>
-            <a href="#" class="" target="_blank"
-              ><i class="fab fa-instagram"></i
-            ></a>
-            <a href="#" class="" target="_blank"
-              ><i class="fab fa-linkedin-in"></i
-            ></a>
-          </div>
+    <br />
+    <br />
+    <br />
+    <br />
+    <!-- Footer -->
+    <footer class="footerPersonal py-2 w-100">
+      <div class="row d-flex w-100">
+        <div class="col-md-4 d-flex justify-content-center align-items-center">
+          <span class="text-white mr-2"
+            >Copyright | Grupo 8 - informatorio 2023</span
+          >
+        </div>
+        <div class="col-md-4 mt-2 mb-2 text-center">
+          <img src="{% static 'img/logo.png' %}" alt="" width="140" />
+        </div>
+        <div
+          class="col-md-4 d-flex gap-4 justify-content-center align-items-center"
+        >
+          <span
+            ><a class="m-2 d-inline" href="google.com.ar"
+              ><img src="{% static 'img/twitter.png' %}" alt="" width="30" /></a
+          ></span>
+          <span
+            ><a class="m-2 d-block" href="facebook.com"
+              ><img src="{% static 'img/facebook.png' %}" alt="" width="30" /></a
+          ></span>
+          <span
+            ><a class="m-2 d-block" href="instagram.com"
+              ><img src="{% static 'img/instagram.png' %}" width="30" alt="" /></a
+          ></span>
         </div>
       </div>
     </footer>
+
+    <script src="{% static 'js/scripts.js' %}"></script>
 
     <!-- Bootstrap JavaScript Libraries -->
     <script
