@@ -5,10 +5,26 @@
 {% block title %}Publicaciones{% endblock %}
 
 {% block content %}
+<h2 class=" mt-5 text-center fw-bold">
+   Todos nuestros articulos
+</h2>
+<p class="text-center mb-5">Puedes ver todos los articulos publicados o filtrarlos</p>
 
-<div class="text-center mb-5">
-    <h3 class="titleSection">Todas las publicaciones</h3>
-  </div>
+  <form method="get">
+    <p>Seleccione una categoría para filtrar los articulos</p>
+    <div class="input-group mb-4 d-flex">
+      <select name="categoria" id="id_categoria" class="form-select">
+        <option value="">Todas las categorías</option>
+        {% for categoria in categorias %}
+          <option value="{{ categoria.nombre }}"
+            {% if categoria.nombre == categoria_seleccionada %}selected{% endif %}>
+            {{ categoria.nombre }}
+          </option>
+        {% endfor %}
+      </select>
+      <button class="btn btn-primary ml-2" type="submit">Filtrar</button>
+    </div>
+  </form>
 
 <div class="row">
     {% for post in posts %}
@@ -20,8 +36,12 @@
                 <h2 class="card-title h5">{{ post.titulo }}</h2>
                 <p class="card-text">{{ post.contenido|slice:":100" }}</p>
                 <a class="btn btn-primary" href="{% url 'post_detail' pk=post.pk %}">Leer mas →</a>
-                <a href="{% url 'update_post' post.id %}" class="btn btn-warning">Editar</a>
-                <a href="{% url 'delete_post' post.id %}" class="btn btn-danger">Eliminar</a>
+                {% if user.is_authenticated %}
+                {% if user.is_superuser or user.usuario.es_colaborador or post.autor == user %}
+                    <a href="{% url 'update_post' post.id %}" class="btn btn-link">Editar</a>
+                    <a href="{% url 'delete_post' post.id %}" class="btn btn-link">Eliminar</a>
+                {% endif %}
+            {% endif %}
             </div>
         </div>
     </div>

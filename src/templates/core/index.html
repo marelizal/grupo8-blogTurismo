@@ -1,14 +1,15 @@
 {% extends 'base.html' %} 
 {% load static %} 
-{% block title %}TChaco - Home{% endblock %}
+{% block title %}Blog turismo{% endblock %}
 {% block content %}
 
 
-<div class="text-center mb-5">
-    <h3 class="titleSection">Últimos articulos</h3>
-  </div>
+<h2 class=" text-center fw-bold">
+  Ultimos articulos
+</h2>
+<p class="text-center mb-5">Nuestra seleccion destacada</p>
   {% for publicacion in ultimas_publicaciones %}
-  <div class="card mb-5">
+  <div class="card mb-5 ">
     <div class="row g-0">
       <div class="col-md-3">
         <img

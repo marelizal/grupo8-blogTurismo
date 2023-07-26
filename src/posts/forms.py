@@ -4,6 +4,7 @@ from .models import Articulo
 class ArticuloForm(forms.ModelForm):
     class Meta:
         model = Articulo
+        exclude = ['autor']
         fields = ['titulo', 'bajada', 'contenido', 'imagen', 'publicado', 'categoria', 'etiqueta', 'autor']
         widgets = {
             'titulo': forms.TextInput(attrs={'class': 'form-control'}),

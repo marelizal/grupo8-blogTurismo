@@ -1,17 +1,29 @@
 
 from django.shortcuts import render, redirect,get_object_or_404
 from .forms import ArticuloForm
-from .models import Articulo, Categoria
+from .models import Articulo, Categoria 
+from django.views.generic import ListView
 
 
 def post_list(request):
-    post = Articulo.objects.all()
+    queryset = Articulo.objects.all()
     categorias = Categoria.objects.all()
 
+    categoria_seleccionada = request.GET.get('categoria')
+    if categoria_seleccionada:
+        queryset = queryset.filter(categoria__nombre=categoria_seleccionada)
+
+    orden = request.GET.get('orderby')
+    if orden == 'fecha_asc':
+        queryset = queryset.order_by('fecha')
+
     context = {
-        'posts': post,
-        "categorias": categorias
+        'posts': queryset,
+        'categorias': categorias,
+        'categoria_seleccionada': categoria_seleccionada,
+        'orden': orden, 
     }
+
     return render(request, 'posts/post_list.html', context)
 
 
@@ -26,6 +38,10 @@ def post_detail(request, pk):
     return render(request, 'posts/post_detail.html', context)
 
 
+
+    
+
+    
 
 def post_add(request):
     if request.method == 'POST':
