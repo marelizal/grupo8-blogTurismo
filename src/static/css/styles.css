@@ -42,7 +42,7 @@ body {
 }
 
 .titleSection {
-  color: #1db062;
+  color: black;
   font-weight: 700;
 }
 
@@ -79,4 +79,9 @@ body {
   background-color: white !important;
   color: black !important;
 
+}
+
+
+.galleryTitle{
+  color: black
 }
