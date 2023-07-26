@@ -91,7 +91,7 @@
                     {% if user.is_superuser %}
                       Admin
                     {% else %}
-                      {{ user.first_name|slice:":2" }} 
+                      {{ user.first_name }} 
                     {% endif %}
                   </button>
                   <ul class="dropdown-menu" aria-labelledby="avatarDropdown">
