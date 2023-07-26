@@ -13,4 +13,6 @@ urlpatterns = [
 
     # Includes:
     path('publicaciones/', include('posts.urls')),
+    path('publicaciones/', include('contact.urls')),
+    path('usuarios/', include('usuarios.urls')),
 ]  
