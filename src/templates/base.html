@@ -85,7 +85,7 @@
           </div>
           <div class="d-flex justify-content-end align-items-center">
             {% if user.is_authenticated %}
-              {% if user.is_superuser or user.usuario.es_colaborador %}
+              {% if user.is_superuser or user.es_colaborador %}
                 <div class="dropdown">
                   <button class="btn btn-danger dropdown-toggle" type="button" id="avatarDropdown" data-bs-toggle="dropdown" aria-expanded="false">
                     {% if user.is_superuser %}

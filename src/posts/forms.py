@@ -35,6 +35,6 @@ class ArticuloForm(forms.ModelForm):
             if imagen.size > 5 * 1024 * 1024:  # 5 MB
                 raise forms.ValidationError('El tamaño de la imagen no puede exceder los 5 MB.')
             # Validar el tipo de archivo si es necesario
-            if not imagen.name.lower().endswith(('.jpg', '.jpeg', '.png', '.gif')):
+            if not imagen.name.lower().endswith(('.jpg', '.jpeg', '.png', '.gif', '.webp')):
                 raise forms.ValidationError('El formato de la imagen no es válido. Solo se permiten archivos JPG, JPEG, PNG y GIF.')
         return imagen
