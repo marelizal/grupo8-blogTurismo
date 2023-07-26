@@ -7,22 +7,25 @@
 {% block content %}
 
 <div class="text-center mb-5">
-    <h3 class="titleSection">Todas las publicaciones</h3>
+    <h3 class="titleSection">Articulos</h3>
   </div>
  
 
   <form method="get">
-    <select name="categoria" id="id_categoria">
+    <p>Seleccione una categoría para filtrar los articulos</p>
+    <div class="input-group mb-4 d-flex">
+      <select name="categoria" id="id_categoria" class="form-select">
         <option value="">Todas las categorías</option>
         {% for categoria in categorias %}
-            <option value="{{ categoria.nombre }}"
-                    {% if categoria.nombre == categoria_seleccionada %}selected{% endif %}>
-                {{ categoria.nombre }}
-            </option>
+          <option value="{{ categoria.nombre }}"
+            {% if categoria.nombre == categoria_seleccionada %}selected{% endif %}>
+            {{ categoria.nombre }}
+          </option>
         {% endfor %}
-    </select>
-    <input type="submit" value="Filtrar">
-</form>
+      </select>
+      <button class="btn btn-primary ml-2" type="submit">Filtrar</button>
+    </div>
+  </form>
 
 <div class="row">
     {% for post in posts %}

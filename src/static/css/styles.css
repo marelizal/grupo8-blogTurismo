@@ -14,7 +14,9 @@ body {
 .slogan {
   font-weight: 400;
 }
-
+.content{
+  flex: 1;
+}
 .menu li a {
   color: white !important;
 }
@@ -35,9 +37,8 @@ body {
 }
 .footerPersonal {
   background-color: #0e281f;
-  bottom: 0;
-  position: fixed;
   width: 100%;
+  flex-shrink: 0;
 }
 
 .titleSection {
