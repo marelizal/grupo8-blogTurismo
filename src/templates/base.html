@@ -83,36 +83,37 @@
           </div>
           <div class="d-flex justify-content-end align-items-center">
             {% if user.is_authenticated %}
-            {% if user.is_superuser or user.usuario.es_colaborador %}
-                <!-- Mostrar el menú desplegable para colaboradores y administradores -->
-          
-                <div class="btn-group">
-                  <button type="button" class="btn btn-danger dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                    Menu del colaborador
+              {% if user.is_superuser or user.usuario.es_colaborador %}
+                <div class="dropdown">
+                  <button class="btn btn-danger dropdown-toggle" type="button" id="avatarDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                    {% if user.is_superuser %}
+                      Admin
+                    {% else %}
+                      {{ user.first_name|slice:":2" }} 
+                    {% endif %}
                   </button>
-                  <ul class="dropdown-menu">
+                  <ul class="dropdown-menu" aria-labelledby="avatarDropdown">
                     <li><a class="dropdown-item" href="{% url 'post_add' %}">Nueva Publicación</a></li>
-                   
                     <li><hr class="dropdown-divider"></li>
-                    <li><a class="dropdown-item" href="{% url 'usuarios:logout' %}">Cerrar Sesión</a>
+                    <li><a class="dropdown-item" href="{% url 'usuarios:logout' %}">Cerrar Sesión</a></li>
                   </ul>
                 </div>
-            {% else %}
+              {% else %}
                 <!-- Mostrar solo el nombre del usuario y enlace para cerrar sesión -->
                 <span class="text-white me-2">Hola, {{ user.first_name }}</span>
                 <a href="{% url 'usuarios:logout' %}" class="btn btn-link text-white login-btn">
-                    Cerrar Sesión
+                  Cerrar Sesión
                 </a>
-            {% endif %}
-        {% else %}
-            <!-- Mostrar enlaces para Ingresar y Registrarse -->
-            <a href="{% url 'usuarios:login' %}" class="btn btn-link mr-2 text-white login-btn">
+              {% endif %}
+            {% else %}
+              <!-- Mostrar enlaces para Ingresar y Registrarse -->
+              <a href="{% url 'usuarios:login' %}" class="btn btn-link mr-2 text-white login-btn">
                 Ingresar
-            </a>
-            <a href="{% url 'usuarios:registrarse' %}" class="btn btn-outline-secondary register-btn">
+              </a>
+              <a href="{% url 'usuarios:registrarse' %}" class="btn btn-outline-secondary register-btn">
                 Registrarme
-            </a>
-        {% endif %}
+              </a>
+            {% endif %}
         </div>
         </div>
       </nav>
