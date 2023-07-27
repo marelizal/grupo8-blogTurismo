@@ -22,6 +22,8 @@
                 </section>
 
 
+                <hr>
+
                 <form action="{% url 'me-gusta' %}" method="post">{% csrf_token %}
                     <input type="hidden" name="publicacion_id" value="{{post.id}}">
     
@@ -36,25 +38,34 @@
                 </form>
 
 
-
             </article>
-            <div class="mt-5">
-                <h4>Agregar un comentario:</h4>
-                <form method="post" action="{% url 'add_comment' post.pk %}">
-                    {% csrf_token %}
-                    {{ comment_form.as_p }}
-                    <button type="submit">Enviar</button>
-                </form>
-            </div>
-            <div class="mt-5">
-                <h4>Comentarios:</h4>
-                {% for comment in post.comment_set.all %}
-                    <div class="mb-2">
-                        <strong>{{ comment.autor.username }} - {{ comment.fecha }}</strong>
-                        <p>{{ comment.content|safe }}</p>
+            <section class="mb-2 mt-4">
+                <div class="card bg-light">
+                    <div class="row">
+                        <div class="card-body p-4">
+                            <form method="post" action="{% url 'add_comment' post.pk %}">
+                                {% csrf_token %}
+                                {{ comment_form.as_p }}
+                                <button type="submit" class="btn btn-primary">Comentar</button>
+                            </form>
+                            <div class="divider mt-4"></div>
+                            {% if post.comment_set.exists %}
+                                {% for comment in post.comment_set.all %}
+                                <div class="d-flex p-2 mb-2 bg-white rounded">
+                                    <div class="w-100">
+                                        <p class="text-muted">{{ comment.autor.username }} el  {{ comment.fecha }} comentó:</p>
+                                        {{ comment.content|safe }}
+                                        <p class="fw-bold"></p>
+                                    </div>
+                                </div>
+                                {% endfor %}
+                            {% else %}
+                                <p class="text-muted">Nadie ha comentado este artículo. ¡Sé el primero en dejar tu opinión!</p>
+                            {% endif %}
+                        </div>
                     </div>
-                {% endfor %}
-            </div>
+                </div>
+            </section>
         </div>
     </div>
 </div>

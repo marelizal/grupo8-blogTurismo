@@ -4,6 +4,7 @@ from .forms import ArticuloForm,CommentForm
 from .models import Articulo, Categoria,Comment 
 from django.views.generic import ListView
 from django.utils import timezone
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 
 
@@ -15,12 +16,28 @@ def post_list(request):
     if categoria_seleccionada:
         queryset = queryset.filter(categoria__nombre=categoria_seleccionada)
 
+
+    for post in queryset:
+        post.cantidad_comentarios = post.comment_set.count()
+    
+    
+    paginator = Paginator(queryset, 10)
+    page = request.GET.get('page')
+    try:
+        posts = paginator.page(page)
+    except PageNotAnInteger:
+        posts = paginator.page(1)
+    except EmptyPage:
+        posts = paginator.page(paginator.num_pages)
+
+
     orden = request.GET.get('orderby')
     if orden == 'fecha_asc':
         queryset = queryset.order_by('fecha')
 
     context = {
-        'posts': queryset,
+        'queryset': queryset,
+        'posts': posts,
         'categorias': categorias,
         'categoria_seleccionada': categoria_seleccionada,
         'orden': orden, 

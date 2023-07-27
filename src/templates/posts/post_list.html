@@ -32,7 +32,7 @@
         <div class="card">
             <a href="{% url 'post_detail' pk=post.pk %}"><img class="card-img-top" src="{{post.imagen.url}}" width="80%" height="80%" alt="..." /></a>
             <div class="card-body">
-                <div class="small text-muted">{{post.creacion}}</div>
+                <div class="small text-muted mb-1">{{post.creacion}} - Comentarios: {{ post.cantidad_comentarios }}</div>
                 <h2 class="card-title h5">{{ post.titulo }}</h2>
                 <p class="card-text">{{ post.contenido|slice:":100" }}</p>
                 <a class="btn btn-primary" href="{% url 'post_detail' pk=post.pk %}">Leer mas →</a>
@@ -47,5 +47,43 @@
     </div>
     {% endfor %}
 </div>
+
+{% if posts.paginator.num_pages > 1 %}
+<nav aria-label="Paginación" class="d-flex justify-content-center mt-5">
+  <ul class="pagination">
+      {% if posts.has_previous %}
+          <li class="page-item">
+              <a class="page-link" href="?page=1" aria-label="Primera">
+                  <span aria-hidden="true">Siguiente</span>
+              </a>
+          </li>
+          <li class="page-item">
+              <a class="page-link" href="?page={{ posts.previous_page_number }}" aria-label="Anterior">
+                  <span aria-hidden="true">Anterior</span>
+              </a>
+          </li>
+      {% endif %}
+
+      {% for page_num in posts.paginator.page_range %}
+          <li class="page-item {% if page_num == posts.number %}active{% endif %}">
+              <a class="page-link" href="?page={{ page_num }}">{{ page_num }}</a>
+          </li>
+      {% endfor %}
+
+      {% if posts.has_next %}
+          <li class="page-item">
+              <a class="page-link" href="?page={{ posts.next_page_number }}" aria-label="Siguiente">
+                  <span aria-hidden="true">Siguiente</span>
+              </a>
+          </li>
+          <li class="page-item">
+              <a class="page-link" href="?page={{ posts.paginator.num_pages }}" aria-label="Última">
+                  <span aria-hidden="true">Anterior</span>
+              </a>
+          </li>
+      {% endif %}
+  </ul>
+</nav>
+{% endif %}
 
 {% endblock %}

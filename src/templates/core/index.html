@@ -27,10 +27,16 @@
             {{publicacion.contenido|slice:":150"}}
           </p>
           <p class="card-text">
-            <small class="text-muted"
-              >{{publicacion.creacion}} | <strong class="text-capitalize">{{publicacion.autor}}</strong>
-              </small
-            >
+            <small class="text-muted">
+              {{ publicacion.creacion }} | <strong class="text-capitalize">{{ publicacion.autor }}</strong> - 
+              {% if publicacion.cantidad_comentarios %}
+                {% if publicacion.cantidad_comentarios == 1 %}
+                  1 persona comentó esta publicación
+                {% else %}
+                  {{ publicacion.cantidad_comentarios }} personas comentaron esta publicación
+                {% endif %}
+              {% endif %}
+            </small>
           </p>
           <a href="{% url 'post_detail' publicacion.id %}" class="btn btn-primary">Leer más</a>
         </div>

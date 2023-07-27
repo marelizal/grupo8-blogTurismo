@@ -2,25 +2,26 @@ import os
 from django.conf import settings
 from django.shortcuts import get_object_or_404, render, redirect, reverse
 from posts.models import Categoria,Articulo
+from django.db.models import Count 
 
 # vista de la pagina de inicio
-
-
 def indexView(request):
-    # Obtener las últimas publicaciones
+     # Obtener las últimas publicaciones
     ultimas_publicaciones = Articulo.objects.filter(publicado=True)[:2]
 
-    # Obtener todas las categorías
+
+    for publicacion in ultimas_publicaciones:
+        publicacion.cantidad_comentarios = publicacion.comment_set.count()
+
     categorias = Categoria.objects.all()
 
-    # Pasar los datos como contexto al renderizado de la plantilla
+    
     context = {
         'ultimas_publicaciones': ultimas_publicaciones,
         'categorias': categorias,
     }
 
     return render(request, 'core/index.html', context)
-
 
 
 def aboutView(request):
