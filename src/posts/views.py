@@ -52,7 +52,19 @@ def post_detail(request, pk):
     return render(request, 'posts/post_detail.html', context)
 
 
+#vista para boton me gusta:
+def me_gustaView(request):
+    if request.method == 'POST':
+        publicacion_id = request.POST.get('publicacion_id')
+        publicacion = get_object_or_404(Articulo, id = publicacion_id)
+        usuario = request.user
 
+        if publicacion.meGusta.filter(id=usuario.id).exists():
+            publicacion.meGusta.remove(usuario)
+        else:
+            publicacion.meGusta.add(usuario)
+
+    return redirect('post_detail', pk=publicacion_id)
 
     
 
