@@ -12,11 +12,11 @@
   <div class="card mb-5 ">
     <div class="row g-0">
       <div class="col-md-3">
-        <img
+        <a href="{% url 'post_detail' publicacion.id %}"><img
           src="{{publicacion.imagen.url}}"
           class="img-fluid h-100 w-100 rounded"
           alt="..."
-        />
+        /></a>
       </div>
       <div class="col-md-9">
         <div class="card-body">
