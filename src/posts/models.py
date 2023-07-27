@@ -38,6 +38,7 @@ class Articulo(models.Model):
     etiqueta = models.ManyToManyField(Etiqueta)
     creacion = models.DateTimeField(auto_now_add=True)
     actualizacion = models.DateTimeField(auto_now=True)
+    meGusta = models.ManyToManyField(Usuario, related_name='publicaciones_gustadas', blank=True)
 
     class Meta:
         ordering = ['-creacion']
