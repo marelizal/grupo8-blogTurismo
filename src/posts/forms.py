@@ -1,5 +1,5 @@
 from django import forms
-from .models import Articulo
+from .models import Articulo,Comment
 
 class ArticuloForm(forms.ModelForm):
     class Meta:
@@ -38,3 +38,8 @@ class ArticuloForm(forms.ModelForm):
             if not imagen.name.lower().endswith(('.jpg', '.jpeg', '.png', '.gif', '.webp')):
                 raise forms.ValidationError('El formato de la imagen no es válido. Solo se permiten archivos JPG, JPEG, PNG y GIF.')
         return imagen
+
+class CommentForm(forms.ModelForm):
+    class Meta:
+        model = Comment
+        fields = ('content',)

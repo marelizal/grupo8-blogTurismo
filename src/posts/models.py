@@ -1,5 +1,6 @@
 from django.db import models
 from usuarios.models import Usuario
+from django.utils import timezone
 
 # Create your models here.
 class Categoria(models.Model):
@@ -43,3 +44,13 @@ class Articulo(models.Model):
 
     def __str__(self):
         return self.titulo
+
+class Comment(models.Model):
+    post = models.ForeignKey(Articulo, on_delete=models.CASCADE)
+    autor = models.ForeignKey(Usuario, on_delete=models.CASCADE)
+    content = models.TextField()
+    creacion = models.DateTimeField(auto_now_add=True)
+    fecha = models.DateTimeField(default=timezone.now)
+
+    def __str__(self):
+        return f"Comentario de {self.autor.username} en {self.post.titulo}"

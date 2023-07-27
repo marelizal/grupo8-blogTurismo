@@ -1,8 +1,10 @@
 
 from django.shortcuts import render, redirect,get_object_or_404
-from .forms import ArticuloForm
-from .models import Articulo, Categoria 
+from .forms import ArticuloForm,CommentForm
+from .models import Articulo, Categoria,Comment 
 from django.views.generic import ListView
+from django.utils import timezone
+
 
 
 def post_list(request):
@@ -28,14 +30,27 @@ def post_list(request):
 
 
 def post_detail(request, pk):
-    post = Articulo.objects.get(pk=pk)
+    post = get_object_or_404(Articulo, pk=pk)
     categorias = Categoria.objects.all()
+    comment_form = CommentForm()
+
+    if request.method == 'POST':
+        comment_form = CommentForm(request.POST)
+        if comment_form.is_valid():
+            comment = comment_form.save(commit=False)
+            comment.post = post
+            comment.autor = request.user
+            comment.fecha = timezone.now()  # Agregar la fecha actual al comentario
+            comment.save()
+            return redirect('post_detail', pk=post.pk)
 
     context = {
         "post": post,
-        "categorias": categorias
+        "categorias": categorias,
+        "comment_form": comment_form,
     }
     return render(request, 'posts/post_detail.html', context)
+
 
 
 
