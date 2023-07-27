@@ -65,7 +65,16 @@ def me_gustaView(request):
             publicacion.meGusta.add(usuario)
 
     return redirect('post_detail', pk=publicacion_id)
+# def me_gustaView(request, post_id):
+#     if request.method == 'POST':
+#         publicacion = get_object_or_404(Articulo, id=post_id)
+#         usuario = request.user
+#         if publicacion.meGusta.filter(id=usuario.id).exists():
+#             publicacion.meGusta.remove(usuario)
+#         else:
+#             publicacion.meGusta.add(usuario)
 
+#     return redirect('post_detail', pk=post_id)
     
 
     

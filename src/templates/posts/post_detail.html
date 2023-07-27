@@ -1,6 +1,7 @@
 <!-- templates/posts/post_detail.html -->
 {% extends 'base.html' %}
 {% load static %}
+
 {% block title %} {{post.titulo}} {% endblock %}
 {% block content %}
 <div class="container mt-5">
@@ -26,14 +27,35 @@
                     <input type="hidden" name="publicacion_id" value="{{post.id}}">
     
                     {% if user in post.meGusta.all %}
-                    <button type="submit" class="btn btn-warning">Ya no me gusta</button>
+                    
+                    <button type="submit" class="btn btn-outline-primary">
+                        <img src="{% static 'img/filled_blue_hand.png' %}" alt="Like" width= 40px height= 40px  >
+                        Pero ya no me gusta</button>
     
                     {% else %}
-                    <button type="submit" class="btn btn-primary">me gusta!</button>
+                    
+                    <button type="submit" class="btn btn-outline-primary">
+                        <img src="{% static 'img/empty_blue_hand.png' %}" alt="Like" width= 40px height= 40px  >
+                        Me gusta!</button>
     
                     {% endif %}
     
                 </form>
+                {% comment %} {% if user in post.meGusta.all %}
+                    <a href="{% url 'me-gusta' post_id=post.id %}" class="like-button">
+                    <img src="{% static 'img/filled_blue_hand.png' %}" alt="Like">
+                    </a>
+                {% else %}
+                    <a href="{% url 'me-gusta' post_id=post.id %}" class="like-button">
+                    <img src="{% static 'img/empty_blue_hand.png' %}" alt="Not Like">
+                    </a>
+                {% endif %} {% endcomment %}
+
+
+
+
+
+
 
 
 

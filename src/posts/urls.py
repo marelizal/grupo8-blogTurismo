@@ -11,4 +11,5 @@ urlpatterns = [
     path('<int:post_id>/eliminar/', views.post_delete, name='delete_post'),
     path('post/<int:pk>/comment/', views.post_detail, name='add_comment'),
     path('me-gusta/', views.me_gustaView, name = 'me-gusta'),
+    #path('<int:post_id>/me-gusta/', views.me_gustaView, name = 'me-gusta'),
 ]
