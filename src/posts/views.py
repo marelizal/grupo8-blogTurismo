@@ -32,8 +32,18 @@ def post_list(request):
 
 
     orden = request.GET.get('orderby')
-    if orden == 'fecha_asc':
-        queryset = queryset.order_by('fecha')
+    if orden:
+            if orden == 'fecha_asc':
+                queryset = queryset.order_by('creacion')
+            elif orden == 'fecha_desc':
+                queryset = queryset.order_by('-creacion')
+            elif orden == 'alf_asc':
+                queryset = queryset.order_by('titulo')
+            elif orden == 'alf_desc':
+                queryset = queryset.order_by('-titulo')
+
+
+    
 
     context = {
         'queryset': queryset,
@@ -42,7 +52,7 @@ def post_list(request):
         'categoria_seleccionada': categoria_seleccionada,
         'orden': orden, 
     }
-
+    #return queryset
     return render(request, 'posts/post_list.html', context)
 
 
@@ -82,7 +92,16 @@ def me_gustaView(request):
             publicacion.meGusta.add(usuario)
 
     return redirect('post_detail', pk=publicacion_id)
+# def me_gustaView(request, post_id):
+#     if request.method == 'POST':
+#         publicacion = get_object_or_404(Articulo, id=post_id)
+#         usuario = request.user
+#         if publicacion.meGusta.filter(id=usuario.id).exists():
+#             publicacion.meGusta.remove(usuario)
+#         else:
+#             publicacion.meGusta.add(usuario)
 
+#     return redirect('post_detail', pk=post_id)
     
 
     
