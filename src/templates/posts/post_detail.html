@@ -27,28 +27,24 @@
 
                 <form action="{% url 'me-gusta' %}" method="post">{% csrf_token %}
                     <input type="hidden" name="publicacion_id" value="{{post.id}}">
-    
+  
+
                     {% if user in post.meGusta.all %}
-                    <button type="submit" class="btn btn-warning">Ya no me gusta</button>
-    
-                    {% else %}
-                    <button type="submit" class="btn btn-primary">me gusta!</button>
-    
-                    {% endif %}
-    
-                    
+               
+
                     <button type="submit" class="btn btn-outline-primary">
                         <img src="{% static 'img/filled_blue_hand.png' %}" alt="Like" width= 40px height= 40px  >
                         Pero ya no me gusta</button>
-    
+
                     {% else %}
-                    
+          
+
                     <button type="submit" class="btn btn-outline-primary">
                         <img src="{% static 'img/empty_blue_hand.png' %}" alt="Like" width= 40px height= 40px  >
                         Me gusta!</button>
-    
+
                     {% endif %}
-    
+
                 </form>
                 {% comment %} {% if user in post.meGusta.all %}
                     <a href="{% url 'me-gusta' post_id=post.id %}" class="like-button">
@@ -70,15 +66,7 @@
 
             </article>
             <div class="mt-5">
-                <h4>Agregar un comentario:</h4>
-                <form method="post" action="{% url 'add_comment' post.pk %}">
-                    {% csrf_token %}
-                    {{ comment_form.as_p }}
-                    <button type="submit">Enviar</button>
-                </form>
 
-
-            </article>
             <section class="mb-2 mt-4">
                 <div class="card bg-light">
                     <div class="row">

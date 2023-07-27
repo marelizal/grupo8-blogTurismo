@@ -10,32 +10,37 @@
 </h2>
 <p class="text-center mb-5">Puedes ver todos los articulos publicados o filtrarlos</p>
 
-  <form method="get">
+<div class="row">
+  <div class="col">
     <p>Seleccione una categoría para filtrar los articulos</p>
-    <div class="input-group mb-4 d-flex">
-      <select name="categoria" id="id_categoria" class="form-select">
-        <option value="">Todas las categorías</option>
-        {% for categoria in categorias %}
-          <option value="{{ categoria.nombre }}"
-            {% if categoria.nombre == categoria_seleccionada %}selected{% endif %}>
-            {{ categoria.nombre }}
-          </option>
-        {% endfor %}
+    <form method="get">
+      <div class="input-group mb-4 d-flex">
+        <select name="categoria" id="id_categoria" class="form-select">
+          <option value="">Todas las categorías</option>
+          {% for categoria in categorias %}
+            <option value="{{ categoria.nombre }}"
+              {% if categoria.nombre == categoria_seleccionada %}selected{% endif %}>
+              {{ categoria.nombre }}
+            </option>
+          {% endfor %}
+        </select>
+        
+        <select name="orderby" id="" class="form-select">
+          <option value="">Ordenar por</option>
+          <option value="fecha_desc" {% if orden == 'fecha_desc' %}selected{% endif %}>Publicaciones recientes</option>
+          <option value="fecha_asc" {% if orden == 'fecha_asc' %}selected{% endif %}>Publicaciones anteriores</option>
+          <option value="alf_asc" {% if orden == 'alf_asc' %}selected{% endif %}>Alfabéticamente ascendente</option>
+          <option value="alf_desc" {% if orden == 'alf_desc' %}selected{% endif %}>Alfabéticamente descendente</option>
       </select>
-      
-      <button class="btn btn-primary ml-2" type="submit">Filtrar</button>
-    </div>
-    <select name="orderby" id="">
-      <option value="">Ordenar por</option>
-      <option value="fecha_desc">Publicaciones recientes</option>
-      <option value="fecha_asc">Publicaciones anteriores</option>
-      <option value="alf_asc">Alfabeticamente ascendente</option>
-      <option value="alf_desc">Alfabeticamente descendente</option>
+        
+        <button class="btn btn-primary ml-2" type="submit">Filtrar</button>
+      </div>
+    </form>
+
+  </div>
   
-    </select>
-  </form>
-  
-  
+  </div>
+</div>
   
 <div class="row">
     {% for post in posts %}

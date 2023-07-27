@@ -16,12 +16,21 @@ def post_list(request):
     if categoria_seleccionada:
         queryset = queryset.filter(categoria__nombre=categoria_seleccionada)
 
+    orden = request.GET.get('orderby')
+    if orden:
+        if orden == 'fecha_asc':
+            queryset = queryset.order_by('creacion')
+        elif orden == 'fecha_desc':
+            queryset = queryset.order_by('-creacion')
+        elif orden == 'alf_asc':
+            queryset = queryset.order_by('titulo')
+        elif orden == 'alf_desc':
+            queryset = queryset.order_by('-titulo')
 
     for post in queryset:
         post.cantidad_comentarios = post.comment_set.count()
-    
-    
-    paginator = Paginator(queryset, 10)
+
+    paginator = Paginator(queryset, 2)
     page = request.GET.get('page')
     try:
         posts = paginator.page(page)
@@ -30,29 +39,13 @@ def post_list(request):
     except EmptyPage:
         posts = paginator.page(paginator.num_pages)
 
-
-    orden = request.GET.get('orderby')
-    if orden:
-            if orden == 'fecha_asc':
-                queryset = queryset.order_by('creacion')
-            elif orden == 'fecha_desc':
-                queryset = queryset.order_by('-creacion')
-            elif orden == 'alf_asc':
-                queryset = queryset.order_by('titulo')
-            elif orden == 'alf_desc':
-                queryset = queryset.order_by('-titulo')
-
-
-    
-
     context = {
-        'queryset': queryset,
         'posts': posts,
         'categorias': categorias,
         'categoria_seleccionada': categoria_seleccionada,
-        'orden': orden, 
+        'orden': orden,
     }
-    #return queryset
+
     return render(request, 'posts/post_list.html', context)
 
 
