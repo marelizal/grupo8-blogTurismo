@@ -16,8 +16,18 @@ def post_list(request):
         queryset = queryset.filter(categoria__nombre=categoria_seleccionada)
 
     orden = request.GET.get('orderby')
-    if orden == 'fecha_asc':
-        queryset = queryset.order_by('fecha')
+    if orden:
+            if orden == 'fecha_asc':
+                queryset = queryset.order_by('creacion')
+            elif orden == 'fecha_desc':
+                queryset = queryset.order_by('-creacion')
+            elif orden == 'alf_asc':
+                queryset = queryset.order_by('titulo')
+            elif orden == 'alf_desc':
+                queryset = queryset.order_by('-titulo')
+
+
+    
 
     context = {
         'posts': queryset,
@@ -25,7 +35,7 @@ def post_list(request):
         'categoria_seleccionada': categoria_seleccionada,
         'orden': orden, 
     }
-
+    #return queryset
     return render(request, 'posts/post_list.html', context)
 
 

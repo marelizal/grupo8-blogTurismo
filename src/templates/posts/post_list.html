@@ -22,10 +22,21 @@
           </option>
         {% endfor %}
       </select>
+      
       <button class="btn btn-primary ml-2" type="submit">Filtrar</button>
     </div>
+    <select name="orderby" id="">
+      <option value="">Ordenar por</option>
+      <option value="fecha_desc">Publicaciones recientes</option>
+      <option value="fecha_asc">Publicaciones anteriores</option>
+      <option value="alf_asc">Alfabeticamente ascendente</option>
+      <option value="alf_desc">Alfabeticamente descendente</option>
+  
+    </select>
   </form>
-
+  
+  
+  
 <div class="row">
     {% for post in posts %}
     <div class="col-lg-6 mb-4">
