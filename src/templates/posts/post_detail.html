@@ -20,6 +20,23 @@
                         {{post.contenido}}
                     </p>
                 </section>
+
+
+                <form action="{% url 'me-gusta' %}" method="post">{% csrf_token %}
+                    <input type="hidden" name="publicacion_id" value="{{post.id}}">
+    
+                    {% if user in post.meGusta.all %}
+                    <button type="submit" class="btn btn-warning">Ya no me gusta</button>
+    
+                    {% else %}
+                    <button type="submit" class="btn btn-primary">me gusta!</button>
+    
+                    {% endif %}
+    
+                </form>
+
+
+
             </article>
             <div class="mt-5">
                 <h4>Agregar un comentario:</h4>
