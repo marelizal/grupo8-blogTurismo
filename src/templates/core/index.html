@@ -28,10 +28,10 @@
           </p>
           <p class="card-text">
             <small class="text-muted">
-              {{ publicacion.creacion }} | <strong class="text-capitalize">{{ publicacion.autor }}</strong> - 
+              {{ publicacion.creacion }} | <strong class="text-capitalize">{{ publicacion.autor }}</strong> 
               {% if publicacion.cantidad_comentarios %}
                 {% if publicacion.cantidad_comentarios == 1 %}
-                  1 persona comentó esta publicación
+                - 1 persona comentó esta publicación
                 {% else %}
                   {{ publicacion.cantidad_comentarios }} personas comentaron esta publicación
                 {% endif %}
