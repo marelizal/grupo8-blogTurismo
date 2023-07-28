@@ -1,5 +1,6 @@
 
 from django.shortcuts import render, redirect,get_object_or_404
+from django.urls import reverse
 from .forms import ArticuloForm,CommentForm
 from .models import Articulo, Categoria,Comment 
 from django.views.generic import ListView
@@ -84,7 +85,7 @@ def me_gustaView(request):
         else:
             publicacion.meGusta.add(usuario)
 
-    return redirect('post_detail', pk=publicacion_id)
+    return redirect(reverse('post_detail', kwargs={'pk':publicacion_id})+'#boton-me-gusta')
 # def me_gustaView(request, post_id):
 #     if request.method == 'POST':
 #         publicacion = get_object_or_404(Articulo, id=post_id)

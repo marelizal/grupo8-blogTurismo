@@ -25,7 +25,8 @@
 
                 <hr>
 
-                <form action="{% url 'me-gusta' %}" method="post">{% csrf_token %}
+                
+                <form action="{% url 'me-gusta' %}" method="post" id="boton-me-gusta" >{% csrf_token %}
                     <input type="hidden" name="publicacion_id" value="{{post.id}}">
   
 
@@ -55,12 +56,6 @@
                     <img src="{% static 'img/empty_blue_hand.png' %}" alt="Not Like">
                     </a>
                 {% endif %} {% endcomment %}
-
-
-
-
-
-
 
 
 
@@ -97,6 +92,16 @@
         </div>
     </div>
 </div>
+<script>
+    // Función para ajustar el desplazamiento de la página después de cargarla
+    window.onload = function() {
+      var offset = -400; // Ajusta este valor para cambiar la cantidad de desplazamiento hacia arriba
+      var anchor = document.getElementById('boton-me-gusta');
+      if (anchor) {
+        window.scrollTo(0, anchor.offsetTop + offset);
+      }
+    };
+  </script>
 {% endblock %}
 
 
