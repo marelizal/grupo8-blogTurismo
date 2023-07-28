@@ -12,4 +12,6 @@ urlpatterns = [
     path('post/<int:pk>/comment/', views.post_detail, name='add_comment'),
     path('me-gusta/', views.me_gustaView, name = 'me-gusta'),
     #path('<int:post_id>/me-gusta/', views.me_gustaView, name = 'me-gusta'),
+    path('add-tag/', views.tag_add.as_view(), name='tag_add'),
+    path('add-category/', views.category_add.as_view(), name='category_add'),
 ]

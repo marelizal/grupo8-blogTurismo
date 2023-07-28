@@ -1,5 +1,5 @@
 from django import forms
-from .models import Articulo, Comment
+from .models import Articulo, Comment, Categoria, Etiqueta
 
 
 class ArticuloForm(forms.ModelForm):
@@ -62,3 +62,13 @@ class CommentForm(forms.ModelForm):
             }),
 
         }
+
+class CrearCategoryForm(forms.ModelForm):
+    class Meta:
+        model = Categoria
+        fields = ['nombre']
+        
+class CrearTagForm(forms.ModelForm):
+    class Meta:
+        model = Etiqueta
+        fields = ['nombre']        

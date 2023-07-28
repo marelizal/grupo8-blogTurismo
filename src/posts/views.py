@@ -1,11 +1,12 @@
 
 from django.shortcuts import render, redirect,get_object_or_404
 from django.urls import reverse
-from .forms import ArticuloForm,CommentForm
-from .models import Articulo, Categoria,Comment 
+from .forms import ArticuloForm,CommentForm, CrearCategoryForm, CrearTagForm
+from .models import Articulo, Categoria, Etiqueta, Comment 
 from django.views.generic import ListView
 from django.utils import timezone
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+from django.views.generic import ListView, CreateView, UpdateView, DeleteView, DetailView
 
 
 
@@ -98,8 +99,6 @@ def me_gustaView(request):
 #     return redirect('post_detail', pk=post_id)
     
 
-    
-
 def post_add(request):
     if request.method == 'POST':
         form = ArticuloForm(request.POST, request.FILES)
@@ -137,3 +136,28 @@ def post_delete(request, post_id):
 
 
     return render(request, 'posts/post_confirm_delete.html', {'post': articulo})
+
+
+
+#View que crea etiquetas nuevas
+class tag_add(CreateView):  #ColaboradorMixin, LoginRequiredMixin, CreateView
+    model = Etiqueta
+    template_name = 'posts/tag_add.html'
+    form_class = CrearTagForm
+    
+    def get_success_url(self):
+        return reverse('tag_add')
+
+#View que crea categorias nuevas
+class category_add(CreateView):  #ColaboradorMixin, LoginRequiredMixin, CreateView
+    model = Categoria
+    template_name = 'posts/category_add.html'
+    form_class = CrearCategoryForm
+
+    def get_success_url(self):
+        return reverse('category_add')
+    
+    # def form_valid(self, form):
+    #     f = form.save(commit=False) # le pare el carro al form para que no guarde todavia.
+    #     f.creador_id = self.request.user.id
+    #     return super().form_valid(f)
