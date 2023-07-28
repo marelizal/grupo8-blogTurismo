@@ -7,7 +7,7 @@
 <div class="container mt-5">
     <div class="row">
         <div class="col-12">
-            <article class="">
+            <article class=""> <!-- Muestra la publicación y el like -->
                 <header class="mb-4 text-center text-uppercase">
                     <h3 class="fw-bolder mb-1"> {{post.titulo}} </h3>
                     <div class="text-muted fst-italic mb-2">{{post.creacion}} | Autor: {{post.autor}} </div>
@@ -25,52 +25,55 @@
 
                 <hr>
 
-                
-                <form action="{% url 'me-gusta' %}" method="post" id="boton-me-gusta" >{% csrf_token %}
-                    <input type="hidden" name="publicacion_id" value="{{post.id}}">
-  
+                <!-- Muestra el like y el me gusta -->
+                {% if user.is_authenticated %}
+                    <form action="{% url 'me-gusta' %}" method="post" id="boton-me-gusta" >{% csrf_token %}
+                        
+                        <input type="hidden" name="publicacion_id" value="{{post.id}}">
 
-                    {% if user in post.meGusta.all %}
-               
+                        {% if user in post.meGusta.all %}
+                            <button type="submit" class="btn btn-outline-primary">
+                                <img src="{% static 'img/filled_blue_hand.png' %}" alt="Like" width= 40px height= 40px  >
+                                Pero ya no me gusta</button>
+                        {% else %}
+                            <button type="submit" class="btn btn-outline-primary">
+                                <img src="{% static 'img/empty_blue_hand.png' %}" alt="Like" width= 40px height= 40px  >
+                                Me gusta!</button>
+                        {% endif %}
 
-                    <button type="submit" class="btn btn-outline-primary">
-                        <img src="{% static 'img/filled_blue_hand.png' %}" alt="Like" width= 40px height= 40px  >
-                        Pero ya no me gusta</button>
-
+                    </form>
+                    {% comment %} {% if user in post.meGusta.all %}
+                        <a href="{% url 'me-gusta' post_id=post.id %}" class="like-button">
+                        <img src="{% static 'img/filled_blue_hand.png' %}" alt="Like">
+                        </a>
                     {% else %}
-          
-
-                    <button type="submit" class="btn btn-outline-primary">
-                        <img src="{% static 'img/empty_blue_hand.png' %}" alt="Like" width= 40px height= 40px  >
-                        Me gusta!</button>
-
-                    {% endif %}
-
-                </form>
-                {% comment %} {% if user in post.meGusta.all %}
-                    <a href="{% url 'me-gusta' post_id=post.id %}" class="like-button">
-                    <img src="{% static 'img/filled_blue_hand.png' %}" alt="Like">
-                    </a>
+                        <a href="{% url 'me-gusta' post_id=post.id %}" class="like-button">
+                        <img src="{% static 'img/empty_blue_hand.png' %}" alt="Not Like">
+                        </a>
+                    {% endif %} {% endcomment %}
                 {% else %}
-                    <a href="{% url 'me-gusta' post_id=post.id %}" class="like-button">
-                    <img src="{% static 'img/empty_blue_hand.png' %}" alt="Not Like">
+                    <a href="{% url 'usuarios:login' %}">
+                        <button type="submit" class="btn btn-outline-primary">
+                            <img src="{% static 'img/empty_blue_hand.png' %}" alt="Like" width= 40px height= 40px  >
+                            Debe estar registrado para dar like o comentar!</button>
                     </a>
-                {% endif %} {% endcomment %}
-
-
+                {% endif %}
 
             </article>
-            <div class="mt-5">
 
-            <section class="mb-2 mt-4">
+
+
+            <section class="mb-2 mt-4"> <!-- Muestra los comentarios -->
                 <div class="card bg-light">
                     <div class="row">
                         <div class="card-body p-4">
-                            <form method="post" action="{% url 'add_comment' post.pk %}">
-                                {% csrf_token %}
-                                {{ comment_form.as_p }}
-                                <button type="submit" class="btn btn-primary">Comentar</button>
-                            </form>
+                            {% if user.is_authenticated %}
+                                <form method="post" action="{% url 'add_comment' post.pk %}">
+                                    {% csrf_token %}
+                                    {{ comment_form.as_p }}
+                                    <button type="submit" class="btn btn-primary">Comentar</button>
+                                </form>
+                            {% endif %}
                             <div class="divider mt-4"></div>
                             {% if post.comment_set.exists %}
                                 {% for comment in post.comment_set.all %}
