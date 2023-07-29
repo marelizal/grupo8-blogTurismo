@@ -85,3 +85,8 @@ body {
 .galleryTitle{
   color: black
 }
+
+
+.publiImg{
+  height: 50px !important;
+}
