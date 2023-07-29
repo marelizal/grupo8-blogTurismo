@@ -7,7 +7,20 @@ from django.views.generic import ListView
 from django.utils import timezone
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.views.generic import ListView, CreateView, UpdateView, DeleteView, DetailView
+from django.shortcuts import render
+from django.contrib.auth.decorators import login_required
 
+
+
+
+def postByAuthor(request):
+     # Obtener el usuario logeado
+     usuario_logeado = request.user
+
+     # Obtener las publicaciones del autor logeado
+     publicaciones_del_autor = Articulo.objects.filter(autor=usuario_logeado)
+
+     return render(request, 'posts/post_byAuthor.html', {'publicaciones_del_autor':publicaciones_del_autor})
 
 
 def post_list(request):

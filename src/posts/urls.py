@@ -14,4 +14,5 @@ urlpatterns = [
     #path('<int:post_id>/me-gusta/', views.me_gustaView, name = 'me-gusta'),
     path('add-tag/', views.tag_add.as_view(), name='tag_add'),
     path('add-category/', views.category_add.as_view(), name='category_add'),
+    path('mis-publicaciones/', views.postByAuthor, name='post_byAuthor'),
 ]
