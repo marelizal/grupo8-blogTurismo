@@ -1,15 +1,18 @@
+
 {% extends 'base.html' %}
 {% load static %}
-{% block title %}TChaco - Acerca de {% endblock %}
-{% block content %}
+{% block title %}TChaco - Acerca de{% endblock %}
 
+{% block content %}
 
 <!-- contenido de la página -->
 <div class="container">
   <div class="row">
     <div class="col-md-12">
+     <div class="text-center"> 
       <h1 class="fw-bold">Acerca de Nosotros</h1>
-      <h4 class="text-muted">Informacion acerca de nuestro blog</h4>
+      <p class="text-muted">Información acerca de TCHACO</p>
+    </div>
       <div class="container mt-5 mb-5">
         <div class="row">
           <div class="col">
@@ -50,11 +53,71 @@
       </div>
       <p>
         Gracias por acompañarnos en este recorrido por el turismo local en el
-        chaco !
+        Chaco!
       </p>
       <p>El Equipo del Blog</p>
     </div>
   </div>
+
+ <hr>
+  <div class="text-center"> 
+    <h3 class="fw-bold">Miembros del equipo</h3>
+    <p class="text-muted">Estos son los miembros del equipo de trabajo</p>
+  </div>
+
+
+  <!-- Cards de los miembros del equipo -->
+  <div class="row mt-5">
+    <div class="col-md-3">
+      <div class="card text-center" style="transition: transform 0.3s ease-in-out;">
+        <img src="https://i.stack.imgur.com/l60Hf.png" class="card-img-top rounded" alt="Avatar del miembro 1">
+        <div class="card-body">
+          <h5 class="card-title">Nombre del Miembro 1</h5>
+          <p class="card-text">Email: miembro1@example.com</p>
+          <p class="card-text">Portafolio: <a href="#">miembro1-portfolio.com</a></p>
+          <p class="card-text">Redes Sociales: <a href="#">@miembro1</a></p>
+          <p class="card-text">Teléfono de contacto: +123456789</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="card text-center" style="transition: transform 0.3s ease-in-out;">
+        <img src="https://i.stack.imgur.com/l60Hf.png" class="card-img-top rounded" alt="Avatar del miembro 2">
+        <div class="card-body">
+          <h5 class="card-title">Nombre del Miembro 2</h5>
+          <p class="card-text">Email: miembro2@example.com</p>
+          <p class="card-text">Portafolio: <a href="#">miembro2-portfolio.com</a></p>
+          <p class="card-text">Redes Sociales: <a href="#">@miembro2</a></p>
+          <p class="card-text">Teléfono de contacto: +987654321</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="card text-center" style="transition: transform 0.3s ease-in-out;">
+        <img src="https://i.stack.imgur.com/l60Hf.png" class="card-img-top rounded" alt="Avatar del miembro 3">
+        <div class="card-body">
+          <h5 class="card-title">Nombre del Miembro 3</h5>
+          <p class="card-text">Email: miembro3@example.com</p>
+          <p class="card-text">Portafolio: <a href="#">miembro3-portfolio.com</a></p>
+          <p class="card-text">Redes Sociales: <a href="#">@miembro3</a></p>
+          <p class="card-text">Teléfono de contacto: +987654321</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="card text-center" style="transition: transform 0.3s ease-in-out;">
+        <img src="https://i.stack.imgur.com/l60Hf.png" class="card-img-top rounded" alt="Avatar del miembro 4">
+        <div class="card-body">
+          <h5 class="card-title">Nombre del Miembro 4</h5>
+          <p class="card-text">Email: miembro4@example.com</p>
+          <p class="card-text">Portafolio: <a href="#">miembro4-portfolio.com</a></p>
+          <p class="card-text">Redes Sociales: <a href="#">@miembro4</a></p>
+          <p class="card-text">Teléfono de contacto: +987654321</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
 </div>
 
 {% endblock %}
