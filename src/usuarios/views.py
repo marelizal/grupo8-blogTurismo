@@ -1,9 +1,10 @@
-from django.shortcuts import render
+from django.shortcuts import render,redirect
 from django.views.generic.edit import CreateView
 from .models import Usuario
-from .forms import RegistrarseForm
+from .forms import RegistrarseForm,UsuarioForm
 from django.urls import reverse
 from django.contrib.auth import login
+from django.contrib import messages
 
 
 # Create your views here.
@@ -23,3 +24,20 @@ class RegistroView(CreateView):
         user = form.save()
         login(self.request, user)
         return response
+    
+
+def editar_perfil(request):
+    usuario_actual = request.user
+
+    if request.method == 'POST':
+        form = UsuarioForm(request.POST, instance=usuario_actual)
+
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Perfil actualizado correctamente.')
+            return redirect(reverse('usuarios:editar_perfil'))  
+
+    else:
+        form = UsuarioForm(instance=usuario_actual)
+
+    return render(request, 'usuarios/editar_perfil.html', {'form': form})

@@ -95,12 +95,12 @@
                     {% endif %}
                   </button>
                   <ul class="dropdown-menu" aria-labelledby="avatarDropdown">
-                    <li><a class="dropdown-item" href="{% url 'post_add' %}">Nueva Publicación</a></li>
-                    <li><hr class="dropdown-divider"></li>
                     <li><a class="dropdown-item" href="{% url 'post_byAuthor' %}">Mis Publicaciones</a></li>
+                    <li><a href="{% url 'usuarios:editar_perfil' %}" class="dropdown-item">Editar Perfil</a></li>
+
                     <li><hr class="dropdown-divider"></li>
+                    <li><a class="dropdown-item" href="{% url 'post_add' %}">Nueva Publicación</a></li>
                     <li><a class="dropdown-item" href="{% url 'category_add' %}">Nueva Categoría</a></li>
-                    <li><hr class="dropdown-divider"></li>
                     <li><a class="dropdown-item" href="{% url 'tag_add' %}">Nueva Etiqueta</a></li>
                     <li><hr class="dropdown-divider"></li>
                     <li><a class="dropdown-item" href="{% url 'usuarios:logout' %}">Cerrar Sesión</a></li>
