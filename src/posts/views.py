@@ -8,8 +8,9 @@ from django.utils import timezone
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.views.generic import ListView, CreateView, UpdateView, DeleteView, DetailView
 from django.shortcuts import render
-from django.contrib.auth.decorators import login_required
-
+from django.contrib.auth.decorators import login_required 
+from django.http import HttpResponse, HttpResponseRedirect
+from django.contrib import messages
 
 
 
@@ -174,3 +175,18 @@ class category_add(CreateView):  #ColaboradorMixin, LoginRequiredMixin, CreateVi
     #     f = form.save(commit=False) # le pare el carro al form para que no guarde todavia.
     #     f.creador_id = self.request.user.id
     #     return super().form_valid(f)
+
+
+
+def delete_comment(request, pk):
+    if request.method == 'POST':
+        comment_id = request.POST.get('comment_id')
+        try:
+            comment_to_delete = Comment.objects.get(pk=comment_id, autor=request.user)
+            comment_to_delete.delete()
+        except Comment.DoesNotExist:
+            pass
+
+
+    return redirect('post_detail', pk=pk)
+
