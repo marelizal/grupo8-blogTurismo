@@ -15,4 +15,5 @@ urlpatterns = [
     path('add-tag/', views.tag_add.as_view(), name='tag_add'),
     path('add-category/', views.category_add.as_view(), name='category_add'),
     path('mis-publicaciones/', views.postByAuthor, name='post_byAuthor'),
+    path('post/<int:pk>/delete_comment/', views.delete_comment, name ='delete_comment'),
 ]

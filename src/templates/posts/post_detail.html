@@ -51,6 +51,9 @@
                         <img src="{% static 'img/empty_blue_hand.png' %}" alt="Not Like">
                         </a>
                     {% endif %} {% endcomment %}
+
+                    
+
                 {% else %}
                     <a href="{% url 'usuarios:login' %}">
                         <button type="submit" class="btn btn-outline-primary">
@@ -83,6 +86,16 @@
                                         {{ comment.content|safe }}
                                         <p class="fw-bold"></p>
                                     </div>
+                                    
+                                
+                                    {% if user.is_authenticated and comment.autor == user %}
+                                    <form method="post" action="{% url 'delete_comment' post.pk %}">
+                                        {% csrf_token %}
+                                        <input type="hidden" name="comment_id" value="{{ comment.id }}">
+                                        <button type="submit" class="btn btn-link btn-sm">Eliminar</button>
+                                    </form>
+                                    
+                                    {% endif %}
                                 </div>
                                 {% endfor %}
                             {% else %}
