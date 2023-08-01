@@ -1,5 +1,4 @@
 # Proyecto Final del Informatorio 2023 Grupo 8
-Repositorio para el Proyecto
 
 # README - Aplicación de Turismo
 
@@ -55,8 +54,8 @@ EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
-EMAIL_HOST_USER = 'tchaco.soporte@gmail.com'
-EMAIL_HOST_PASSWORD = 'cvnhujdgwhqjqdrj'
+EMAIL_HOST_USER = 'consultar correo'
+EMAIL_HOST_PASSWORD = 'consultar contraseña'
 ```
 
 4. Realizar las migraciones de la base de datos:
