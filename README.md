@@ -13,3 +13,9 @@ Esta es una aplicación web de turismo desarrollada en Django que tiene como obj
 - Agregar reaccion y comentarios: Los usuarios pueden agregar comentarios y reaccionar a las destintas publicaciones.
 - Administración: Los administradores pueden acceder al panel de administración de Django para gestionar, crear, modificar y eliminar usuarios.
 
+## Requisitos del sistema 🛠️
+- Python 3.x  Del lado del servidor (backend)
+- Django 3.x  Framework web
+- PostgreSQL (u otro motor de base de datos compatible con Django)
+- Bootstrap(https://getbootstrap.com/) Framework web para el desarrollo frontend (HTML, CSS, JavaScript)
+- Otros requisitos específicos que se encuentren en el archivo `requirements.txt`.
