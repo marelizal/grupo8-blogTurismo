@@ -81,4 +81,35 @@ python manage.py runserver
 
 7. Acceder a la aplicación en tu navegador web en la dirección `http://localhost:8000/`.
 
+## Uso
+1. Regístrate o inicia sesión con tu cuenta.
+2. Explora la distintas publicaciones turísticas.
+3. Haz clic en una publicacion para ver más detalles, imágenes y comentarios.
+4. Agrega tus propios comentarios y reacciones a los distintos tipos de publicaciones.
+5. Los administradores pueden acceder al panel de administración en `http://localhost:8000/admin/` para gestionar usuarios y publicaciones.
+
+## Contribuciones
+¡Las contribuciones son bienvenidas! Si deseas contribuir a esta aplicación de turismo en Django, sigue los siguientes pasos:
+
+1. Crea un fork del repositorio.
+2. Crea una rama para tu nueva funcionalidad o corrección de errores: `git checkout -b nombre_rama`.
+3. Realiza tus cambios y realiza commits descriptivos.
+4. Haz push de tu rama a tu fork: `git push origin nombre_rama`.
+5. Abre un pull request en el repositorio original y describe tus cambios.
+
+## Licencia
+Esta aplicación se distribuye bajo la Licencia MIT. Consulta el archivo `LICENSE` para más detalles.
+
+## Contacto
+Si tienes alguna pregunta o sugerencia, no dudes en contactarnos a través de [tchaco.soporte@gmail.com]
+
+## Autores ✒️
+
+_Proyecto desarrollado por:_ 
+**Miguel Pieszko**
+**Martin Zalazar**
+**Fabian Sanchez**
+**Miguel Gomez**
+**David Vargas**
+
 
