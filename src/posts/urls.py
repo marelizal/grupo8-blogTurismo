@@ -17,4 +17,5 @@ urlpatterns = [
     path('mis-publicaciones/', views.postByAuthor, name='post_byAuthor'),
     path('post/<int:pk>/delete_comment/', views.delete_comment, name ='delete_comment'),
     path('post/<int:pk>/edit_comment/', views.edit_comment, name ='edit_comment'),
+    path('post/<int:post_id>/edit_comment/<int:comment_id>/', views.edit_comment, name='edit_comment'),
 ]
