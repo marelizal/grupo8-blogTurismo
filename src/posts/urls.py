@@ -16,4 +16,5 @@ urlpatterns = [
     path('add-category/', views.category_add.as_view(), name='category_add'),
     path('mis-publicaciones/', views.postByAuthor, name='post_byAuthor'),
     path('post/<int:pk>/delete_comment/', views.delete_comment, name ='delete_comment'),
+    path('post/<int:pk>/edit_comment/', views.edit_comment, name ='edit_comment'),
 ]

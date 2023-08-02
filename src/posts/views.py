@@ -190,3 +190,28 @@ def delete_comment(request, pk):
 
     return redirect('post_detail', pk=pk)
 
+def edit_comment(request, pk):
+    comment = get_object_or_404 (Comment, id=pk)
+    if request.method == 'POST':
+        form = CommentForm(request.POST, instance=comment)
+        if form.is_valid():
+            form.save()
+            return redirect ('post_detail', articulo_id=comment.articulo.id)
+        
+        else:
+            form = CommentForm(instance=comment)
+        
+        return render(request, 'edit_comment', {'form':form})
+        
+'''        
+        comment_id = request.POST.get('comment_id')
+        try:
+            comment_to_edit = Comment.objects.get(pk=comment_id, autor=request.user)
+            comment_to_edit.edit()
+        except Comment.DoesNotExist:
+            pass
+
+
+    return redirect('post_detail', pk=pk)
+
+'''
