@@ -190,28 +190,24 @@ def delete_comment(request, pk):
 
     return redirect('post_detail', pk=pk)
 
-def edit_comment(request, pk):
-    comment = get_object_or_404 (Comment, id=pk)
+
+
+@login_required 
+def edit_comment(request, post_id, comment_id):
+    comment = get_object_or_404(Comment, id=comment_id, autor=request.user)
+
     if request.method == 'POST':
-        form = CommentForm(request.POST, instance=comment)
-        if form.is_valid():
-            form.save()
-            return redirect ('post_detail', articulo_id=comment.articulo.id)
-        
-        else:
-            form = CommentForm(instance=comment)
-        
-        return render(request, 'edit_comment', {'form':form})
-        
-'''        
-        comment_id = request.POST.get('comment_id')
-        try:
-            comment_to_edit = Comment.objects.get(pk=comment_id, autor=request.user)
-            comment_to_edit.edit()
-        except Comment.DoesNotExist:
-            pass
+        comment_form = CommentForm(request.POST, instance=comment)
+        if comment_form.is_valid():
+            comment_form.save()
+            return redirect('post_detail', pk=comment.post.pk)
+    else:
+        comment_form = CommentForm(instance=comment)
 
+    context = {
+        'comment_form': comment_form,
+        'comment': comment,
+    }
 
-    return redirect('post_detail', pk=pk)
-
-'''
+    
+    return render(request, 'posts/edit_comment.html', context)
