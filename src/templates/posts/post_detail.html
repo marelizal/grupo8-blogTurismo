@@ -93,12 +93,9 @@
                                         {% csrf_token %}
                                         <input type="hidden" name="comment_id" value="{{ comment.id }}">
                                         <button type="submit" class="btn btn-link btn-sm">Eliminar</button>
+                                        <a href="{% url 'edit_comment' post_id=post.id comment_id=comment.id %}" class="btn btn-link btn-sm">Editar</a>
                                     </form>
-                                    <form method="post" action="{% url 'edit_comment' post.pk %}">
-                                        {% csrf_token %}
-                                        <input type="hidden" name="edit_id" value="{{ comment.id }}">
-                                        <button type="submit" class="btn btn-link btn-sm">Editar</button>
-                                    </form>
+                                    
                                     {% endif %}
                                 </div>
                                 {% endfor %}
