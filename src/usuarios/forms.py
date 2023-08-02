@@ -18,6 +18,8 @@ class RegistrarseForm(UserCreationForm):
 
 
 class UsuarioForm(UserChangeForm):
+    password_change = PasswordChangeForm(Usuario)
+    
     class Meta:
         model = Usuario
         fields = ['first_name', 'last_name', 'email', 'telefono', 'domicilio']
@@ -27,6 +29,8 @@ class UsuarioForm(UserChangeForm):
             'email': 'Correo electrónico', 
             'telefono': 'Teléfono', 
             'domicilio': 'Domicilio',
+            
+            
         }
 
     def __init__(self, *args, **kwargs):

@@ -8,7 +8,7 @@ class Contacto(models.Model):
     tipo_consulta = models.CharField(max_length=50, choices=[
         ('pregunta_general', 'Pregunta general'),
         ('sugerencia', 'Sugerencia'),
-        ('reportar_problema', 'Reportar un problema'),
+        ('reportar_problema', 'Reportar un problema')
     ])
     mensaje = models.TextField()
 
