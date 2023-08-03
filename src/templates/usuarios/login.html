@@ -12,10 +12,14 @@
                 {{ form|crispy }}
                 <div class="d-flex align-items-center mt-3">
                     <button type="submit" class="btn btn-primary mr-2">Iniciar Sesión</button>
-                    <div class="enlace"> 
-                        <a href="{% url 'usuarios:registrarse' %}" class="btn btn-link">Registrate!</a>
-                    </div>
+                    <a href="{% url 'usuarios:registrarse' %}" class="btn btn-link">Registrate!</a>
                 </div>
+             
+    
+                    <div class="enlace"> 
+                        <a href="{% url 'usuarios:password_reset' %}" class="btn btn-link">¿Olvidaste tu contraseña?</a>
+                    </div>
+             
             </form>
         </div>
     </div>

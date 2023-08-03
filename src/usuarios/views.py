@@ -5,6 +5,7 @@ from .forms import RegistrarseForm,UsuarioForm
 from django.urls import reverse
 from django.contrib.auth import login
 from django.contrib import messages
+from django.contrib.auth import views as auth_views
 
 
 # Create your views here.
@@ -41,3 +42,33 @@ def editar_perfil(request):
         form = UsuarioForm(instance=usuario_actual)
 
     return render(request, 'usuarios/editar_perfil.html', {'form': form})
+
+
+def password_reset_view(request):
+    if request.method == 'POST':
+        form = auth_views.PasswordResetForm(request.POST)
+        if form.is_valid():
+            form.save(
+                request=request,
+                from_email='tchaco.soporte@gmail.com',  
+                email_template_name='usuarios/password_reset_email.html', 
+            )
+            messages.success(request, 'Se ha enviado un correo electrónico con instrucciones para restablecer tu contraseña.')
+            return redirect('usuarios:password_reset_done')
+    else:
+        form = auth_views.PasswordResetForm()
+    return render(request, 'usuarios/password_reset.html', {'form': form})
+
+
+def password_reset_done_view(request):
+    return render(request, 'usuarios/password_reset_done.html')
+
+
+def password_reset_confirm_view(request, uidb64, token):
+    return auth_views.PasswordResetConfirmView.as_view(
+        template_name='usuarios/password_reset_confirm.html',
+        success_url=reverse('usuarios:password_reset_complete')
+    )(request, uidb64=uidb64, token=token)
+
+def password_reset_complete_view(request):
+    return render(request, 'usuarios/password_reset_complete.html')
