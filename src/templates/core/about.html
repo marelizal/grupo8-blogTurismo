@@ -68,59 +68,113 @@
 
   <!-- Cards de los miembros del equipo -->
   <div class="row mt-5" >
-    <div class="col-md-3">
-      <div class="card text-left" style="transition: transform 0.3s ease-in-out;">
-        <img src="{% static 'img/david.jpg' %}" class="card-img-top rounded custom-img" alt="Avatar del miembro 1">
-        <div class="card-body">
-          <p class="card-title mt-2 fw-bold">David Vargas</p>
-          <p class="card-text mb-0">Email: <br><small class="fw-bold">david_vargas@fibertel.com.ar</small></p> 
-          <p class="card-text mb-0">Instagram: <a href="#" class="fw-bold">@wal7535</a></p>
 
-        </div>
-      </div>
-    </div>
-    <div class="col-md-3">
-      <div class="card text-left" style="transition: transform 0.3s ease-in-out;">
-        <img src="{% static 'img/miguelg.jpg' %}" class="card-img-top rounded custom-img" alt="Avatar del miembro 1">
-        <div class="card-body">
-          <p class="card-title mt-2 fw-bold">Miguel Gomez</p>
-          <p class="card-text mb-0">Email: <br><small class="fw-bold">miguegomez2706@gmail.com</small></p> 
-          <p class="card-text mb-0">Instagram: <a href="#" class="fw-bold">@miembro1</a></p>
-        </div>
-      </div>
-    </div>
-    <div class="col-md-3">
-      <div class="card text-left" style="transition: transform 0.3s ease-in-out;">
-        <img src="{% static 'img/miguel.jpg' %}" class="card-img-top rounded custom-img" alt="Avatar del miembro 1" width="15200">
-        <div class="card-body">
-          <p class="card-title mt-2 fw-bold">Miguel Pieszko</p>
-          <p class="card-text mb-0">Email: <br><small class="fw-bold">mpieszko@hotmail.com</small></p> 
-          <p class="card-text mb-0">Linkedin: <a href="https://www.linkedin.com/in/miguel-pieszko-064254238/" class="fw-bold">Miguel-Pieszko</a></p>
-        </div>
-      </div>
-    </div>
-    <div class="col-md-3">
-      <div class="card text-left" style="transition: transform 0.3s ease-in-out;">
-        <img src="{% static 'img/fabian.jpg' %}" class="card-img-top rounded custom-img" alt="Avatar del miembro 1">
-        <div class="card-body">
-          <p class="card-title mt-2 fw-bold">Fabian Sanchez</p>
-          <p class="card-text mb-0">Email: <br><small class="fw-bold">fabiansanchez89@gmail.com</small></p> 
-          <p class="card-text mb-0">Linkedin: <a href="https://www.linkedin.com/in/fabian-sanchez-67b34a8b/" class="fw-bold">Fabian-Sanchez</a></p>
-        </div>
-      </div>
-    </div>
+
 
     <div class="col-md-3">
-      <div class="card text-left" style="transition: transform 0.3s ease-in-out;">
-        <img src="{% static 'img/martin.jpg' %}" class="card-img-top rounded custom-img" alt="Avatar del miembro 1">
+      <div class="card custom-card p-3  d-flex align-items-center" style="transition: transform 0.3s ease-in-out;">
+        <img src="{% static 'img/miguel.jpg' %}" class="card-img-top rounded custom-img rounded-circle"  alt="Avatar del miembro 1">
         <div class="card-body">
-          <p class="card-title mt-2 fw-bold">Martin Zalazar</p>
-          <p class="card-text mb-0">Email: <br><small class="fw-bold">marelizal@outlook.es</small></p> 
-          <p class="card-text mb-0">Linkedin: <a href="https://www.linkedin.com/in/leandro-zalazar-64152079/" class="fw-bold">Martin-Zalazar</a></p>
+          <hr>
+          <p class="card-title text-center mt-2 fw-bold">Miguel Pieszko</p>
+         <hr>
+          <div class="d-flex justify-content-around mt-3">
+            <a href="mailto:mpieszko@hotmail.com" target="_blank">
+              <img src="{% static 'img/email.png' %}" alt="">
+            </a>
+            <a href="https://github.com/mpieszko" target="_blank">
+              <img src="{% static 'img/git.png' %}" alt="">
+            </a>
+            <a href="https://www.linkedin.com/in/miguel-pieszko-064254238/" target="_blank">
+              <img src="{% static 'img/linkedin.png' %}" alt="">
+            </a>
         </div>
       </div>
     </div>
-   
+  </div>
+    <div class="col-md-3">
+      <div class="card custom-card p-3  d-flex align-items-center" style="transition: transform 0.3s ease-in-out;">
+        <img src="{% static 'img/miguelg.jpg' %}" class="card-img-top rounded custom-img rounded-circle"  alt="Avatar del miembro 1">
+        <div class="card-body">
+          <hr>
+          <p class="card-title text-center mt-2 fw-bold">Miguel Gomez</p>
+         <hr>
+          <div class="d-flex justify-content-around mt-3">
+            <a href="mailto:miguegomez2706@gmail.com" target="_blank">
+              <img src="{% static 'img/email.png' %}" alt="">
+            </a>
+            <a href="https://github.com/miguegomez2706" target="_blank">
+              <img src="{% static 'img/git.png' %}" alt="">
+            </a>
+            <a href="#" target="_blank">
+              <img src="{% static 'img/linkedin.png' %}" alt="">
+            </a>
+        </div>
+      </div>
+    </div>
+  </div>
+    <div class="col-md-3">
+      <div class="card custom-card p-3  d-flex align-items-center" style="transition: transform 0.3s ease-in-out;">
+        <img src="{% static 'img/david.jpg' %}" class="card-img-top rounded custom-img rounded-circle"  alt="Avatar del miembro 1">
+        <div class="card-body">
+          <hr>
+          <p class="card-title text-center mt-2 fw-bold">David Vargas</p>
+         <hr>
+          <div class="d-flex justify-content-around mt-3">
+            <a href="mailto:david_vargas@fibertel.com.ar" target="_blank">
+              <img src="{% static 'img/email.png' %}" alt="">
+            </a>
+            <a href="https://github.com/Davidjav3384" target="_blank">
+              <img src="{% static 'img/git.png' %}" alt="">
+            </a>
+            <a href="https://www.instagram.com/wal7535" target="_blank">
+              <img src="{% static 'img/instagram2.png' %}" alt="">
+            </a>
+        </div>
+      </div>
+    </div>
+  </div>
+    <div class="col-md-3">
+      <div class="card custom-card p-3  d-flex align-items-center" style="transition: transform 0.3s ease-in-out;">
+        <img src="{% static 'img/fabian.jpg' %}" class="card-img-top rounded custom-img rounded-circle"  alt="Avatar del miembro 1">
+        <div class="card-body">
+          <hr>
+          <p class="card-title text-center mt-2 fw-bold">Fabian Sanchez</p>
+         <hr>
+          <div class="d-flex justify-content-around mt-3">
+            <a href="mailto:fabiansanchez89@gmail.com" target="_blank">
+              <img src="{% static 'img/email.png' %}" alt="">
+            </a>
+            <a href="https://github.com/Fabsanchez89" target="_blank">
+              <img src="{% static 'img/git.png' %}" alt="">
+            </a>
+            <a href="https://www.linkedin.com/in/fabian-sanchez-67b34a8b/" target="_blank">
+              <img src="{% static 'img/linkedin.png' %}" alt="">
+            </a>
+        </div>
+      </div>
+    </div>
+  </div>
+    <div class="col-md-3 mt-2">
+      <div class="card custom-card p-3  d-flex align-items-center" style="transition: transform 0.3s ease-in-out;">
+        <img src="{% static 'img/martin.jpg' %}" class="card-img-top rounded custom-img rounded-circle"  alt="Avatar del miembro 1">
+        <div class="card-body">
+          <hr>
+          <p class="card-title text-center mt-2 fw-bold">Martin Zalazar</p>
+         <hr>
+          <div class="d-flex justify-content-around mt-3">
+            <a href="mailto:marelizal@outlook.es" target="_blank">
+              <img src="{% static 'img/email.png' %}" alt="">
+            </a>
+            <a href="https://www.github.com/marelizal" target="_blank">
+              <img src="{% static 'img/git.png' %}" alt="">
+            </a>
+            <a href="https://www.linkedin.com/in/marelizal" target="_blank">
+              <img src="{% static 'img/linkedin.png' %}" alt="">
+            </a>
+        </div>
+      </div>
+    </div>
   </div>
 
 </div>

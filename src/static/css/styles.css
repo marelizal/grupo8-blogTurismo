@@ -92,4 +92,7 @@ body {
 }
 
 .custom-img {
-  width: 250px;}
+  width: 110px;}
+.custom-card{
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+}
