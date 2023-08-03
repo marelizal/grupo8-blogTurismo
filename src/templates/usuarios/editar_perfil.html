@@ -17,12 +17,13 @@
             </div>
         {% endif %}
 
-      
+      <br />
+     
         <form method="post">
           {% csrf_token %}
           {{ form|crispy }}
           <h5 class="mt-3">Cambio de Contraseña</h5>
-          {{ form.password_change.as_p }}
+          {{ form.password_change |crispy}}
           <button type="submit" class="btn btn-primary mt-3">Guardar Cambios</button>
         </form>
       </div>
