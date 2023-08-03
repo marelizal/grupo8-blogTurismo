@@ -5,7 +5,8 @@ from .models import Articulo, Comment, Categoria, Etiqueta
 class ArticuloForm(forms.ModelForm):
     class Meta:
         model = Articulo
-        exclude = ['autor']
+        exclude = ['autor','bajada']
+
         fields = ['titulo', 'bajada', 'contenido', 'imagen',
                   'publicado', 'categoria', 'etiqueta', 'autor']
         widgets = {
