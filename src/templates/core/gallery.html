@@ -8,15 +8,15 @@
 
 <h2 class="galleryTitle text-center fw-bold">
    Galería de Imágenes
- </h2>
- <p class="text-center">Nuestra selección de imágenes</p>
+</h2>
+<p class="text-center">Nuestra selección de imágenes</p>
 
-<div class="row">
-   <div class="col">
-    {% for image in images %}
-    <img src="{{ image }}" alt="Imagen" class="rounded mt-1" width="300" height="200">
-{% endfor %}
+<div class="row  d-flex justify-content-center gap-5">
+   {% for image in images %}
+   <div class="col-3">
+      <img src="{{ image }}" alt="Imagen" class="rounded mt-1" width="300" height="200">
    </div>
+   {% endfor %}
 </div>
 
 {% endblock %}
