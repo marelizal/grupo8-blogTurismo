@@ -182,7 +182,7 @@ def delete_comment(request, pk):
     if request.method == 'POST':
         comment_id = request.POST.get('comment_id')
         try:
-            comment_to_delete = Comment.objects.get(pk=comment_id, autor=request.user)
+            comment_to_delete = Comment.objects.get(pk=comment_id)
             comment_to_delete.delete()
         except Comment.DoesNotExist:
             pass
@@ -194,7 +194,7 @@ def delete_comment(request, pk):
 
 @login_required 
 def edit_comment(request, post_id, comment_id):
-    comment = get_object_or_404(Comment, id=comment_id, autor=request.user)
+    comment = get_object_or_404(Comment, id=comment_id)
 
     if request.method == 'POST':
         comment_form = CommentForm(request.POST, instance=comment)

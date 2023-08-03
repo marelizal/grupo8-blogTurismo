@@ -99,8 +99,12 @@
                                     {% endif %}
                                 </div>
                                 {% endfor %}
-                            {% else %}
+                            {% elif user.is_authenticated %}
                                 <p class="text-muted">Nadie ha comentado este artículo. ¡Sé el primero en dejar tu opinión!</p>
+                            {% else %}
+                                <a href="{% url 'usuarios:login' %}">
+                                    <p class="text-muted">Nadie ha comentado este artículo. ¡Sé el primero en dejar tu opinión!</p>
+                                </a>
                             {% endif %}
                         </div>
                     </div>
