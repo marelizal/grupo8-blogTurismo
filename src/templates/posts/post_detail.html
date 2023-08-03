@@ -88,7 +88,7 @@
                                     </div>
                                     
                                 
-                                    {% if user.is_authenticated and comment.autor == user %}
+                                    {% if user.is_authenticated and comment.autor == user or user.is_superuser or user.es_colaborador %}
                                     <form method="post" action="{% url 'delete_comment' post.pk %}">
                                         {% csrf_token %}
                                         <input type="hidden" name="comment_id" value="{{ comment.id }}">
