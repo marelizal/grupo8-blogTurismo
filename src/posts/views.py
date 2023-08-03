@@ -3,14 +3,12 @@ from django.shortcuts import render, redirect,get_object_or_404
 from django.urls import reverse
 from .forms import ArticuloForm,CommentForm, CrearCategoryForm, CrearTagForm
 from .models import Articulo, Categoria, Etiqueta, Comment 
-from django.views.generic import ListView
 from django.utils import timezone
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
-from django.views.generic import ListView, CreateView, UpdateView, DeleteView, DetailView
-from django.shortcuts import render
+from django.views.generic import CreateView
 from django.contrib.auth.decorators import login_required 
-from django.http import HttpResponse, HttpResponseRedirect
-from django.contrib import messages
+from functools import wraps
+from django.http import Http404
 
 
 
@@ -192,7 +190,22 @@ def delete_comment(request, pk):
 
 
 
+def user_is_author_or_staff(view_func):
+    @wraps(view_func)
+    def _wrapped_view(request, post_id, comment_id, *args, **kwargs):
+        comment = get_object_or_404(Comment, id=comment_id)
+        
+        if request.user == comment.autor or request.user.is_staff:
+            return view_func(request, post_id, comment_id, *args, **kwargs)
+        else:
+            raise Http404("No tienes permiso para editar este comentario.")
+    
+    return _wrapped_view
+
+
+
 @login_required 
+@user_is_author_or_staff
 def edit_comment(request, post_id, comment_id):
     comment = get_object_or_404(Comment, id=comment_id)
 
