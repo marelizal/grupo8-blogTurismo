@@ -195,7 +195,7 @@ def user_is_author_or_staff(view_func):
     def _wrapped_view(request, post_id, comment_id, *args, **kwargs):
         comment = get_object_or_404(Comment, id=comment_id)
         
-        if request.user == comment.autor or request.user.is_staff:
+        if request.user == comment.autor or  request.user.is_superuser or request.user.es_colaborador:
             return view_func(request, post_id, comment_id, *args, **kwargs)
         else:
             raise Http404("No tienes permiso para editar este comentario.")
